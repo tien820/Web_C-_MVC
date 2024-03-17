@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DoAnC#\\QLTTTA\\Web_C-_MVC\\TTAnhNgu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D95CF15D-2001-4E94-9FA4-3A0E55220757}|TTAnhNgu\\TTAnhNgu.csproj|d:\\doanc#\\qlttta\\web_c-_mvc\\ttanhngu\\ttanhngu\\areas\\admin\\views\\shared\\_adminnavsidenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D95CF15D-2001-4E94-9FA4-3A0E55220757}|TTAnhNgu\\TTAnhNgu.csproj|solutionrelative:ttanhngu\\areas\\admin\\views\\shared\\_adminnavsidenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D95CF15D-2001-4E94-9FA4-3A0E55220757}|TTAnhNgu\\TTAnhNgu.csproj|d:\\doanc#\\qlttta\\web_c-_mvc\\ttanhngu\\ttanhngu\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D95CF15D-2001-4E94-9FA4-3A0E55220757}|TTAnhNgu\\TTAnhNgu.csproj|solutionrelative:ttanhngu\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_AdminNavSidenav.cshtml",
+              "DocumentMoniker": "D:\\DoAnC#\\QLTTTA\\Web_C-_MVC\\TTAnhNgu\\TTAnhNgu\\Areas\\Admin\\Views\\Shared\\_AdminNavSidenav.cshtml",
+              "RelativeDocumentMoniker": "TTAnhNgu\\Areas\\Admin\\Views\\Shared\\_AdminNavSidenav.cshtml",
+              "ToolTip": "D:\\DoAnC#\\QLTTTA\\Web_C-_MVC\\TTAnhNgu\\TTAnhNgu\\Areas\\Admin\\Views\\Shared\\_AdminNavSidenav.cshtml",
+              "RelativeToolTip": "TTAnhNgu\\Areas\\Admin\\Views\\Shared\\_AdminNavSidenav.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-17T20:47:30.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\DoAnC#\\QLTTTA\\Web_C-_MVC\\TTAnhNgu\\TTAnhNgu\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "TTAnhNgu\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\DoAnC#\\QLTTTA\\Web_C-_MVC\\TTAnhNgu\\TTAnhNgu\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "TTAnhNgu\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-17T20:24:40.005Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
