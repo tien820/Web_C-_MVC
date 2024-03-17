@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLTTAVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BUOI_HOC">
+          <Key>
+            <PropertyRef Name="BH_MABH" />
+          </Key>
+          <Property Name="BH_MABH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BH_TENBH" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="BH_GIOHOC" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BH_GIOTAN" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GIAO_VIEN">
+          <Key>
+            <PropertyRef Name="GV_MAGV" />
+          </Key>
+          <Property Name="GV_MAGV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NND_MANHOM" Type="int" Nullable="false" />
+          <Property Name="GV_HOTEN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GV_CCCD" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="GV_GIOITINH" Type="bit" Nullable="false" />
+          <Property Name="GV_NGAYSINH" Type="datetime" />
+          <Property Name="GV_DIACHI" Type="varchar" MaxLength="200" />
+          <Property Name="GV_SDT" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="GV_EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GV_MATKHAU" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="GV_TRINHDOTA" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HOC_VIEN">
+          <Key>
+            <PropertyRef Name="HV_MAHV" />
+          </Key>
+          <Property Name="HV_MAHV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HV_HOTEN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HV_CCCD" Type="char" MaxLength="15" />
+          <Property Name="HV_GIOITINH" Type="bit" />
+          <Property Name="HV_NGAYSINH" Type="datetime" />
+          <Property Name="HV_DIACHI" Type="varchar" MaxLength="200" />
+          <Property Name="HV_SDT" Type="char" MaxLength="15" />
+          <Property Name="HV_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="HV_MATKHAU" Type="varchar" MaxLength="30" />
+          <Property Name="HV_HINHANH" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HOCKY_NAMHOC">
+          <Key>
+            <PropertyRef Name="HKNH_MAHKNH" />
+          </Key>
+          <Property Name="HKNH_MAHKNH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HKNH_TENHK" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="HKNH_NAMHOC" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAI_LOP">
+          <Key>
+            <PropertyRef Name="LL_MALOAI" />
+          </Key>
+          <Property Name="LL_MALOAI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LL_TENLOAILOP" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOP">
+          <Key>
+            <PropertyRef Name="L_MALOP" />
+          </Key>
+          <Property Name="L_MALOP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LL_MALOAI" Type="int" Nullable="false" />
+          <Property Name="GV_MAGV" Type="int" Nullable="false" />
+          <Property Name="L_TENLOP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="L_SISO" Type="tinyint" />
+          <Property Name="L_NGAYBD" Type="datetime" Nullable="false" />
+          <Property Name="L_NGAYKT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NGAY_DANG_KY">
+          <Key>
+            <PropertyRef Name="HV_MAHV" />
+            <PropertyRef Name="L_MALOP" />
+          </Key>
+          <Property Name="HV_MAHV" Type="int" Nullable="false" />
+          <Property Name="L_MALOP" Type="int" Nullable="false" />
+          <Property Name="NDK_NGAYDK" Type="datetime" />
+          <Property Name="NDK_CODK" Type="bit" />
+        </EntityType>
+        <EntityType Name="NHOM_NGUOI_DUNG">
+          <Key>
+            <PropertyRef Name="NND_MANHOM" />
+          </Key>
+          <Property Name="NND_MANHOM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NND_TENNHOMND" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PHONG_HOC">
+          <Key>
+            <PropertyRef Name="PH_MAPHONG" />
+          </Key>
+          <Property Name="PH_MAPHONG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PH_TENPHONG" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="THOI_KHOA_BIEU">
+          <Key>
+            <PropertyRef Name="TKB_MATKB" />
+          </Key>
+          <Property Name="TKB_MATKB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BH_MABH" Type="int" Nullable="false" />
+          <Property Name="L_MALOP" Type="int" Nullable="false" />
+          <Property Name="HKNH_MAHKNH" Type="int" Nullable="false" />
+          <Property Name="PH_MAPHONG" Type="int" Nullable="false" />
+          <Property Name="TKB_THUTRONGTUAN" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TKB_GHICHU" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
+          <End Role="NHOM_NGUOI_DUNG" Type="Self.NHOM_NGUOI_DUNG" Multiplicity="1" />
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHOM_NGUOI_DUNG">
+              <PropertyRef Name="NND_MANHOM" />
+            </Principal>
+            <Dependent Role="GIAO_VIEN">
+              <PropertyRef Name="NND_MANHOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOP_GIANGDAY_GIAO_VIE">
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="1" />
+          <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAO_VIEN">
+              <PropertyRef Name="GV_MAGV" />
+            </Principal>
+            <Dependent Role="LOP">
+              <PropertyRef Name="GV_MAGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOP_THUOCLOAI_LOAI_LOP">
+          <End Role="LOAI_LOP" Type="Self.LOAI_LOP" Multiplicity="1" />
+          <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_LOP">
+              <PropertyRef Name="LL_MALOAI" />
+            </Principal>
+            <Dependent Role="LOP">
+              <PropertyRef Name="LL_MALOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGAY_DAN_DANGKYLOP_LOP">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="1" />
+          <End Role="NGAY_DANG_KY" Type="Self.NGAY_DANG_KY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="L_MALOP" />
+            </Principal>
+            <Dependent Role="NGAY_DANG_KY">
+              <PropertyRef Name="L_MALOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGAY_DAN_HOCVIENDK_HOC_VIEN">
+          <End Role="HOC_VIEN" Type="Self.HOC_VIEN" Multiplicity="1" />
+          <End Role="NGAY_DANG_KY" Type="Self.NGAY_DANG_KY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOC_VIEN">
+              <PropertyRef Name="HV_MAHV" />
+            </Principal>
+            <Dependent Role="NGAY_DANG_KY">
+              <PropertyRef Name="HV_MAHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THOI_KHO_COBUOIHOC_BUOI_HOC">
+          <End Role="BUOI_HOC" Type="Self.BUOI_HOC" Multiplicity="1" />
+          <End Role="THOI_KHOA_BIEU" Type="Self.THOI_KHOA_BIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUOI_HOC">
+              <PropertyRef Name="BH_MABH" />
+            </Principal>
+            <Dependent Role="THOI_KHOA_BIEU">
+              <PropertyRef Name="BH_MABH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THOI_KHO_COHKNH_HOCKY_NA">
+          <End Role="HOCKY_NAMHOC" Type="Self.HOCKY_NAMHOC" Multiplicity="1" />
+          <End Role="THOI_KHOA_BIEU" Type="Self.THOI_KHOA_BIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOCKY_NAMHOC">
+              <PropertyRef Name="HKNH_MAHKNH" />
+            </Principal>
+            <Dependent Role="THOI_KHOA_BIEU">
+              <PropertyRef Name="HKNH_MAHKNH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THOI_KHO_HOCTAIPHO_PHONG_HO">
+          <End Role="PHONG_HOC" Type="Self.PHONG_HOC" Multiplicity="1" />
+          <End Role="THOI_KHOA_BIEU" Type="Self.THOI_KHOA_BIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG_HOC">
+              <PropertyRef Name="PH_MAPHONG" />
+            </Principal>
+            <Dependent Role="THOI_KHOA_BIEU">
+              <PropertyRef Name="PH_MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THOI_KHO_TKBCHOLOP_LOP">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="1" />
+          <End Role="THOI_KHOA_BIEU" Type="Self.THOI_KHOA_BIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="L_MALOP" />
+            </Principal>
+            <Dependent Role="THOI_KHOA_BIEU">
+              <PropertyRef Name="L_MALOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTTAVModelStoreContainer">
+          <EntitySet Name="BUOI_HOC" EntityType="Self.BUOI_HOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIAO_VIEN" EntityType="Self.GIAO_VIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOC_VIEN" EntityType="Self.HOC_VIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOCKY_NAMHOC" EntityType="Self.HOCKY_NAMHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAI_LOP" EntityType="Self.LOAI_LOP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOP" EntityType="Self.LOP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGAY_DANG_KY" EntityType="Self.NGAY_DANG_KY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHOM_NGUOI_DUNG" EntityType="Self.NHOM_NGUOI_DUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHONG_HOC" EntityType="Self.PHONG_HOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THOI_KHOA_BIEU" EntityType="Self.THOI_KHOA_BIEU" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" Association="Self.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
+            <End Role="NHOM_NGUOI_DUNG" EntitySet="NHOM_NGUOI_DUNG" />
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOP_GIANGDAY_GIAO_VIE" Association="Self.FK_LOP_GIANGDAY_GIAO_VIE">
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+            <End Role="LOP" EntitySet="LOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOP_THUOCLOAI_LOAI_LOP" Association="Self.FK_LOP_THUOCLOAI_LOAI_LOP">
+            <End Role="LOAI_LOP" EntitySet="LOAI_LOP" />
+            <End Role="LOP" EntitySet="LOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGAY_DAN_DANGKYLOP_LOP" Association="Self.FK_NGAY_DAN_DANGKYLOP_LOP">
+            <End Role="LOP" EntitySet="LOP" />
+            <End Role="NGAY_DANG_KY" EntitySet="NGAY_DANG_KY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" Association="Self.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN">
+            <End Role="HOC_VIEN" EntitySet="HOC_VIEN" />
+            <End Role="NGAY_DANG_KY" EntitySet="NGAY_DANG_KY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THOI_KHO_COBUOIHOC_BUOI_HOC" Association="Self.FK_THOI_KHO_COBUOIHOC_BUOI_HOC">
+            <End Role="BUOI_HOC" EntitySet="BUOI_HOC" />
+            <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THOI_KHO_COHKNH_HOCKY_NA" Association="Self.FK_THOI_KHO_COHKNH_HOCKY_NA">
+            <End Role="HOCKY_NAMHOC" EntitySet="HOCKY_NAMHOC" />
+            <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THOI_KHO_HOCTAIPHO_PHONG_HO" Association="Self.FK_THOI_KHO_HOCTAIPHO_PHONG_HO">
+            <End Role="PHONG_HOC" EntitySet="PHONG_HOC" />
+            <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THOI_KHO_TKBCHOLOP_LOP" Association="Self.FK_THOI_KHO_TKBCHOLOP_LOP">
+            <End Role="LOP" EntitySet="LOP" />
+            <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTTAVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BUOI_HOC">
+          <Key>
+            <PropertyRef Name="BH_MABH" />
+          </Key>
+          <Property Name="BH_MABH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BH_TENBH" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BH_GIOHOC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BH_GIOTAN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="Self.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" FromRole="BUOI_HOC" ToRole="THOI_KHOA_BIEU" />
+        </EntityType>
+        <EntityType Name="GIAO_VIEN">
+          <Key>
+            <PropertyRef Name="GV_MAGV" />
+          </Key>
+          <Property Name="GV_MAGV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NND_MANHOM" Type="Int32" Nullable="false" />
+          <Property Name="GV_HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GV_CCCD" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="GV_GIOITINH" Type="Boolean" Nullable="false" />
+          <Property Name="GV_NGAYSINH" Type="DateTime" Precision="3" />
+          <Property Name="GV_DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="GV_SDT" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="GV_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GV_MATKHAU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GV_TRINHDOTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="NHOM_NGUOI_DUNG" Relationship="Self.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" FromRole="GIAO_VIEN" ToRole="NHOM_NGUOI_DUNG" />
+          <NavigationProperty Name="LOPs" Relationship="Self.FK_LOP_GIANGDAY_GIAO_VIE" FromRole="GIAO_VIEN" ToRole="LOP" />
+        </EntityType>
+        <EntityType Name="HOC_VIEN">
+          <Key>
+            <PropertyRef Name="HV_MAHV" />
+          </Key>
+          <Property Name="HV_MAHV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HV_HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HV_CCCD" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="HV_GIOITINH" Type="Boolean" />
+          <Property Name="HV_NGAYSINH" Type="DateTime" Precision="3" />
+          <Property Name="HV_DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="HV_SDT" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="HV_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HV_MATKHAU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="HV_HINHANH" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NGAY_DANG_KY" Relationship="Self.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" FromRole="HOC_VIEN" ToRole="NGAY_DANG_KY" />
+        </EntityType>
+        <EntityType Name="HOCKY_NAMHOC">
+          <Key>
+            <PropertyRef Name="HKNH_MAHKNH" />
+          </Key>
+          <Property Name="HKNH_MAHKNH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HKNH_TENHK" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HKNH_NAMHOC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="Self.FK_THOI_KHO_COHKNH_HOCKY_NA" FromRole="HOCKY_NAMHOC" ToRole="THOI_KHOA_BIEU" />
+        </EntityType>
+        <EntityType Name="LOAI_LOP">
+          <Key>
+            <PropertyRef Name="LL_MALOAI" />
+          </Key>
+          <Property Name="LL_MALOAI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LL_TENLOAILOP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LOPs" Relationship="Self.FK_LOP_THUOCLOAI_LOAI_LOP" FromRole="LOAI_LOP" ToRole="LOP" />
+        </EntityType>
+        <EntityType Name="LOP">
+          <Key>
+            <PropertyRef Name="L_MALOP" />
+          </Key>
+          <Property Name="L_MALOP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LL_MALOAI" Type="Int32" Nullable="false" />
+          <Property Name="GV_MAGV" Type="Int32" Nullable="false" />
+          <Property Name="L_TENLOP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="L_SISO" Type="Byte" />
+          <Property Name="L_NGAYBD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="L_NGAYKT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GIAO_VIEN" Relationship="Self.FK_LOP_GIANGDAY_GIAO_VIE" FromRole="LOP" ToRole="GIAO_VIEN" />
+          <NavigationProperty Name="LOAI_LOP" Relationship="Self.FK_LOP_THUOCLOAI_LOAI_LOP" FromRole="LOP" ToRole="LOAI_LOP" />
+          <NavigationProperty Name="NGAY_DANG_KY" Relationship="Self.FK_NGAY_DAN_DANGKYLOP_LOP" FromRole="LOP" ToRole="NGAY_DANG_KY" />
+          <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="Self.FK_THOI_KHO_TKBCHOLOP_LOP" FromRole="LOP" ToRole="THOI_KHOA_BIEU" />
+        </EntityType>
+        <EntityType Name="NGAY_DANG_KY">
+          <Key>
+            <PropertyRef Name="HV_MAHV" />
+            <PropertyRef Name="L_MALOP" />
+          </Key>
+          <Property Name="HV_MAHV" Type="Int32" Nullable="false" />
+          <Property Name="L_MALOP" Type="Int32" Nullable="false" />
+          <Property Name="NDK_NGAYDK" Type="DateTime" Precision="3" />
+          <Property Name="NDK_CODK" Type="Boolean" />
+          <NavigationProperty Name="HOC_VIEN" Relationship="Self.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" FromRole="NGAY_DANG_KY" ToRole="HOC_VIEN" />
+          <NavigationProperty Name="LOP" Relationship="Self.FK_NGAY_DAN_DANGKYLOP_LOP" FromRole="NGAY_DANG_KY" ToRole="LOP" />
+        </EntityType>
+        <EntityType Name="NHOM_NGUOI_DUNG">
+          <Key>
+            <PropertyRef Name="NND_MANHOM" />
+          </Key>
+          <Property Name="NND_MANHOM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NND_TENNHOMND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GIAO_VIEN" Relationship="Self.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" FromRole="NHOM_NGUOI_DUNG" ToRole="GIAO_VIEN" />
+        </EntityType>
+        <EntityType Name="PHONG_HOC">
+          <Key>
+            <PropertyRef Name="PH_MAPHONG" />
+          </Key>
+          <Property Name="PH_MAPHONG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PH_TENPHONG" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="Self.FK_THOI_KHO_HOCTAIPHO_PHONG_HO" FromRole="PHONG_HOC" ToRole="THOI_KHOA_BIEU" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="THOI_KHOA_BIEU">
+          <Key>
+            <PropertyRef Name="TKB_MATKB" />
+          </Key>
+          <Property Name="TKB_MATKB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BH_MABH" Type="Int32" Nullable="false" />
+          <Property Name="L_MALOP" Type="Int32" Nullable="false" />
+          <Property Name="HKNH_MAHKNH" Type="Int32" Nullable="false" />
+          <Property Name="PH_MAPHONG" Type="Int32" Nullable="false" />
+          <Property Name="TKB_THUTRONGTUAN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TKB_GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BUOI_HOC" Relationship="Self.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" FromRole="THOI_KHOA_BIEU" ToRole="BUOI_HOC" />
+          <NavigationProperty Name="HOCKY_NAMHOC" Relationship="Self.FK_THOI_KHO_COHKNH_HOCKY_NA" FromRole="THOI_KHOA_BIEU" ToRole="HOCKY_NAMHOC" />
+          <NavigationProperty Name="LOP" Relationship="Self.FK_THOI_KHO_TKBCHOLOP_LOP" FromRole="THOI_KHOA_BIEU" ToRole="LOP" />
+          <NavigationProperty Name="PHONG_HOC" Relationship="Self.FK_THOI_KHO_HOCTAIPHO_PHONG_HO" FromRole="THOI_KHOA_BIEU" ToRole="PHONG_HOC" />
+        </EntityType>
+        <Association Name="FK_THOI_KHO_COBUOIHOC_BUOI_HOC">
+          <End Role="BUOI_HOC" Type="Self.BUOI_HOC" Multiplicity="1" />
+          <End Role="THOI_KHOA_BIEU" Type="Self.THOI_KHOA_BIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUOI_HOC">
+              <PropertyRef Name="BH_MABH" />
+            </Principal>
+            <Dependent Role="THOI_KHOA_BIEU">
+              <PropertyRef Name="BH_MABH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
+          <End Role="NHOM_NGUOI_DUNG" Type="Self.NHOM_NGUOI_DUNG" Multiplicity="1" />
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHOM_NGUOI_DUNG">
+              <PropertyRef Name="NND_MANHOM" />
+            </Principal>
+            <Dependent Role="GIAO_VIEN">
+              <PropertyRef Name="NND_MANHOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOP_GIANGDAY_GIAO_VIE">
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="1" />
+          <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAO_VIEN">
+              <PropertyRef Name="GV_MAGV" />
+            </Principal>
+            <Dependent Role="LOP">
+              <PropertyRef Name="GV_MAGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGAY_DAN_HOCVIENDK_HOC_VIEN">
+          <End Role="HOC_VIEN" Type="Self.HOC_VIEN" Multiplicity="1" />
+          <End Role="NGAY_DANG_KY" Type="Self.NGAY_DANG_KY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOC_VIEN">
+              <PropertyRef Name="HV_MAHV" />
+            </Principal>
+            <Dependent Role="NGAY_DANG_KY">
+              <PropertyRef Name="HV_MAHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THOI_KHO_COHKNH_HOCKY_NA">
+          <End Role="HOCKY_NAMHOC" Type="Self.HOCKY_NAMHOC" Multiplicity="1" />
+          <End Role="THOI_KHOA_BIEU" Type="Self.THOI_KHOA_BIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOCKY_NAMHOC">
+              <PropertyRef Name="HKNH_MAHKNH" />
+            </Principal>
+            <Dependent Role="THOI_KHOA_BIEU">
+              <PropertyRef Name="HKNH_MAHKNH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOP_THUOCLOAI_LOAI_LOP">
+          <End Role="LOAI_LOP" Type="Self.LOAI_LOP" Multiplicity="1" />
+          <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_LOP">
+              <PropertyRef Name="LL_MALOAI" />
+            </Principal>
+            <Dependent Role="LOP">
+              <PropertyRef Name="LL_MALOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGAY_DAN_DANGKYLOP_LOP">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="1" />
+          <End Role="NGAY_DANG_KY" Type="Self.NGAY_DANG_KY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="L_MALOP" />
+            </Principal>
+            <Dependent Role="NGAY_DANG_KY">
+              <PropertyRef Name="L_MALOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THOI_KHO_TKBCHOLOP_LOP">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="1" />
+          <End Role="THOI_KHOA_BIEU" Type="Self.THOI_KHOA_BIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="L_MALOP" />
+            </Principal>
+            <Dependent Role="THOI_KHOA_BIEU">
+              <PropertyRef Name="L_MALOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THOI_KHO_HOCTAIPHO_PHONG_HO">
+          <End Role="PHONG_HOC" Type="Self.PHONG_HOC" Multiplicity="1" />
+          <End Role="THOI_KHOA_BIEU" Type="Self.THOI_KHOA_BIEU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG_HOC">
+              <PropertyRef Name="PH_MAPHONG" />
+            </Principal>
+            <Dependent Role="THOI_KHOA_BIEU">
+              <PropertyRef Name="PH_MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTTAVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BUOI_HOC" EntityType="Self.BUOI_HOC" />
+          <EntitySet Name="GIAO_VIEN" EntityType="Self.GIAO_VIEN" />
+          <EntitySet Name="HOC_VIEN" EntityType="Self.HOC_VIEN" />
+          <EntitySet Name="HOCKY_NAMHOC" EntityType="Self.HOCKY_NAMHOC" />
+          <EntitySet Name="LOAI_LOP" EntityType="Self.LOAI_LOP" />
+          <EntitySet Name="LOPs" EntityType="Self.LOP" />
+          <EntitySet Name="NGAY_DANG_KY" EntityType="Self.NGAY_DANG_KY" />
+          <EntitySet Name="NHOM_NGUOI_DUNG" EntityType="Self.NHOM_NGUOI_DUNG" />
+          <EntitySet Name="PHONG_HOC" EntityType="Self.PHONG_HOC" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="THOI_KHOA_BIEU" EntityType="Self.THOI_KHOA_BIEU" />
+          <AssociationSet Name="FK_THOI_KHO_COBUOIHOC_BUOI_HOC" Association="Self.FK_THOI_KHO_COBUOIHOC_BUOI_HOC">
+            <End Role="BUOI_HOC" EntitySet="BUOI_HOC" />
+            <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" Association="Self.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
+            <End Role="NHOM_NGUOI_DUNG" EntitySet="NHOM_NGUOI_DUNG" />
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOP_GIANGDAY_GIAO_VIE" Association="Self.FK_LOP_GIANGDAY_GIAO_VIE">
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+            <End Role="LOP" EntitySet="LOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" Association="Self.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN">
+            <End Role="HOC_VIEN" EntitySet="HOC_VIEN" />
+            <End Role="NGAY_DANG_KY" EntitySet="NGAY_DANG_KY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THOI_KHO_COHKNH_HOCKY_NA" Association="Self.FK_THOI_KHO_COHKNH_HOCKY_NA">
+            <End Role="HOCKY_NAMHOC" EntitySet="HOCKY_NAMHOC" />
+            <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOP_THUOCLOAI_LOAI_LOP" Association="Self.FK_LOP_THUOCLOAI_LOAI_LOP">
+            <End Role="LOAI_LOP" EntitySet="LOAI_LOP" />
+            <End Role="LOP" EntitySet="LOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGAY_DAN_DANGKYLOP_LOP" Association="Self.FK_NGAY_DAN_DANGKYLOP_LOP">
+            <End Role="LOP" EntitySet="LOPs" />
+            <End Role="NGAY_DANG_KY" EntitySet="NGAY_DANG_KY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THOI_KHO_TKBCHOLOP_LOP" Association="Self.FK_THOI_KHO_TKBCHOLOP_LOP">
+            <End Role="LOP" EntitySet="LOPs" />
+            <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THOI_KHO_HOCTAIPHO_PHONG_HO" Association="Self.FK_THOI_KHO_HOCTAIPHO_PHONG_HO">
+            <End Role="PHONG_HOC" EntitySet="PHONG_HOC" />
+            <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTTAVModelStoreContainer" CdmEntityContainer="QLTTAVEntities">
+          <EntitySetMapping Name="BUOI_HOC">
+            <EntityTypeMapping TypeName="QLTTAVModel.BUOI_HOC">
+              <MappingFragment StoreEntitySet="BUOI_HOC">
+                <ScalarProperty Name="BH_MABH" ColumnName="BH_MABH" />
+                <ScalarProperty Name="BH_TENBH" ColumnName="BH_TENBH" />
+                <ScalarProperty Name="BH_GIOHOC" ColumnName="BH_GIOHOC" />
+                <ScalarProperty Name="BH_GIOTAN" ColumnName="BH_GIOTAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIAO_VIEN">
+            <EntityTypeMapping TypeName="QLTTAVModel.GIAO_VIEN">
+              <MappingFragment StoreEntitySet="GIAO_VIEN">
+                <ScalarProperty Name="GV_MAGV" ColumnName="GV_MAGV" />
+                <ScalarProperty Name="NND_MANHOM" ColumnName="NND_MANHOM" />
+                <ScalarProperty Name="GV_HOTEN" ColumnName="GV_HOTEN" />
+                <ScalarProperty Name="GV_CCCD" ColumnName="GV_CCCD" />
+                <ScalarProperty Name="GV_GIOITINH" ColumnName="GV_GIOITINH" />
+                <ScalarProperty Name="GV_NGAYSINH" ColumnName="GV_NGAYSINH" />
+                <ScalarProperty Name="GV_DIACHI" ColumnName="GV_DIACHI" />
+                <ScalarProperty Name="GV_SDT" ColumnName="GV_SDT" />
+                <ScalarProperty Name="GV_EMAIL" ColumnName="GV_EMAIL" />
+                <ScalarProperty Name="GV_MATKHAU" ColumnName="GV_MATKHAU" />
+                <ScalarProperty Name="GV_TRINHDOTA" ColumnName="GV_TRINHDOTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOC_VIEN">
+            <EntityTypeMapping TypeName="QLTTAVModel.HOC_VIEN">
+              <MappingFragment StoreEntitySet="HOC_VIEN">
+                <ScalarProperty Name="HV_MAHV" ColumnName="HV_MAHV" />
+                <ScalarProperty Name="HV_HOTEN" ColumnName="HV_HOTEN" />
+                <ScalarProperty Name="HV_CCCD" ColumnName="HV_CCCD" />
+                <ScalarProperty Name="HV_GIOITINH" ColumnName="HV_GIOITINH" />
+                <ScalarProperty Name="HV_NGAYSINH" ColumnName="HV_NGAYSINH" />
+                <ScalarProperty Name="HV_DIACHI" ColumnName="HV_DIACHI" />
+                <ScalarProperty Name="HV_SDT" ColumnName="HV_SDT" />
+                <ScalarProperty Name="HV_EMAIL" ColumnName="HV_EMAIL" />
+                <ScalarProperty Name="HV_MATKHAU" ColumnName="HV_MATKHAU" />
+                <ScalarProperty Name="HV_HINHANH" ColumnName="HV_HINHANH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOCKY_NAMHOC">
+            <EntityTypeMapping TypeName="QLTTAVModel.HOCKY_NAMHOC">
+              <MappingFragment StoreEntitySet="HOCKY_NAMHOC">
+                <ScalarProperty Name="HKNH_MAHKNH" ColumnName="HKNH_MAHKNH" />
+                <ScalarProperty Name="HKNH_TENHK" ColumnName="HKNH_TENHK" />
+                <ScalarProperty Name="HKNH_NAMHOC" ColumnName="HKNH_NAMHOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAI_LOP">
+            <EntityTypeMapping TypeName="QLTTAVModel.LOAI_LOP">
+              <MappingFragment StoreEntitySet="LOAI_LOP">
+                <ScalarProperty Name="LL_MALOAI" ColumnName="LL_MALOAI" />
+                <ScalarProperty Name="LL_TENLOAILOP" ColumnName="LL_TENLOAILOP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOPs">
+            <EntityTypeMapping TypeName="QLTTAVModel.LOP">
+              <MappingFragment StoreEntitySet="LOP">
+                <ScalarProperty Name="L_MALOP" ColumnName="L_MALOP" />
+                <ScalarProperty Name="LL_MALOAI" ColumnName="LL_MALOAI" />
+                <ScalarProperty Name="GV_MAGV" ColumnName="GV_MAGV" />
+                <ScalarProperty Name="L_TENLOP" ColumnName="L_TENLOP" />
+                <ScalarProperty Name="L_SISO" ColumnName="L_SISO" />
+                <ScalarProperty Name="L_NGAYBD" ColumnName="L_NGAYBD" />
+                <ScalarProperty Name="L_NGAYKT" ColumnName="L_NGAYKT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGAY_DANG_KY">
+            <EntityTypeMapping TypeName="QLTTAVModel.NGAY_DANG_KY">
+              <MappingFragment StoreEntitySet="NGAY_DANG_KY">
+                <ScalarProperty Name="HV_MAHV" ColumnName="HV_MAHV" />
+                <ScalarProperty Name="L_MALOP" ColumnName="L_MALOP" />
+                <ScalarProperty Name="NDK_NGAYDK" ColumnName="NDK_NGAYDK" />
+                <ScalarProperty Name="NDK_CODK" ColumnName="NDK_CODK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHOM_NGUOI_DUNG">
+            <EntityTypeMapping TypeName="QLTTAVModel.NHOM_NGUOI_DUNG">
+              <MappingFragment StoreEntitySet="NHOM_NGUOI_DUNG">
+                <ScalarProperty Name="NND_MANHOM" ColumnName="NND_MANHOM" />
+                <ScalarProperty Name="NND_TENNHOMND" ColumnName="NND_TENNHOMND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONG_HOC">
+            <EntityTypeMapping TypeName="QLTTAVModel.PHONG_HOC">
+              <MappingFragment StoreEntitySet="PHONG_HOC">
+                <ScalarProperty Name="PH_MAPHONG" ColumnName="PH_MAPHONG" />
+                <ScalarProperty Name="PH_TENPHONG" ColumnName="PH_TENPHONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLTTAVModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THOI_KHOA_BIEU">
+            <EntityTypeMapping TypeName="QLTTAVModel.THOI_KHOA_BIEU">
+              <MappingFragment StoreEntitySet="THOI_KHOA_BIEU">
+                <ScalarProperty Name="TKB_MATKB" ColumnName="TKB_MATKB" />
+                <ScalarProperty Name="BH_MABH" ColumnName="BH_MABH" />
+                <ScalarProperty Name="L_MALOP" ColumnName="L_MALOP" />
+                <ScalarProperty Name="HKNH_MAHKNH" ColumnName="HKNH_MAHKNH" />
+                <ScalarProperty Name="PH_MAPHONG" ColumnName="PH_MAPHONG" />
+                <ScalarProperty Name="TKB_THUTRONGTUAN" ColumnName="TKB_THUTRONGTUAN" />
+                <ScalarProperty Name="TKB_GHICHU" ColumnName="TKB_GHICHU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

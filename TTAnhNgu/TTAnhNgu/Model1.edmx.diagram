@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c133436da82404ca2308a0bc067c5ba" Name="Diagram1">
+        <EntityTypeShape EntityType="QLTTAVModel.BUOI_HOC" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.GIAO_VIEN" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.HOC_VIEN" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.HOCKY_NAMHOC" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.LOAI_LOP" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.LOP" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.NGAY_DANG_KY" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.NHOM_NGUOI_DUNG" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.PHONG_HOC" Width="1.5" PointX="8.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTAVModel.THOI_KHOA_BIEU" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTAVModel.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTAVModel.FK_LOP_GIANGDAY_GIAO_VIE" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTAVModel.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_COHKNH_HOCKY_NA" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTAVModel.FK_LOP_THUOCLOAI_LOAI_LOP" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTAVModel.FK_NGAY_DAN_DANGKYLOP_LOP" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_TKBCHOLOP_LOP" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_HOCTAIPHO_PHONG_HO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
