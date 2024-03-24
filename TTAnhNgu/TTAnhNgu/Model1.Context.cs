@@ -36,5 +36,6 @@ namespace TTAnhNgu
         public virtual DbSet<PHONG_HOC> PHONG_HOC { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<THOI_KHOA_BIEU> THOI_KHOA_BIEU { get; set; }
+        public virtual DbSet<TRINH_DO> TRINH_DO { get; set; }
     }
 }

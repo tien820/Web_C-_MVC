@@ -22,7 +22,9 @@ namespace TTAnhNgu
     
         public int LL_MALOAI { get; set; }
         public string LL_TENLOAILOP { get; set; }
+        public int Lop_TrinhDo { get; set; }
     
+        public virtual TRINH_DO TRINH_DO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LOP> LOPs { get; set; }
     }

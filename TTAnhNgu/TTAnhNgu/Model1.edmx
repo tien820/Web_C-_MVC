@@ -10,7 +10,7 @@
             <PropertyRef Name="BH_MABH" />
           </Key>
           <Property Name="BH_MABH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BH_TENBH" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="BH_TENBH" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="BH_GIOHOC" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="BH_GIOTAN" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
@@ -20,26 +20,26 @@
           </Key>
           <Property Name="GV_MAGV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NND_MANHOM" Type="int" Nullable="false" />
-          <Property Name="GV_HOTEN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GV_HOTEN" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="GV_CCCD" Type="char" MaxLength="15" Nullable="false" />
           <Property Name="GV_GIOITINH" Type="bit" Nullable="false" />
           <Property Name="GV_NGAYSINH" Type="datetime" />
-          <Property Name="GV_DIACHI" Type="varchar" MaxLength="200" />
+          <Property Name="GV_DIACHI" Type="nvarchar" MaxLength="200" />
           <Property Name="GV_SDT" Type="char" MaxLength="15" Nullable="false" />
           <Property Name="GV_EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="GV_MATKHAU" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="GV_TRINHDOTA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GV_TRINHDOTA" Type="int" />
         </EntityType>
         <EntityType Name="HOC_VIEN">
           <Key>
             <PropertyRef Name="HV_MAHV" />
           </Key>
           <Property Name="HV_MAHV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HV_HOTEN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HV_HOTEN" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="HV_CCCD" Type="char" MaxLength="15" />
           <Property Name="HV_GIOITINH" Type="bit" />
           <Property Name="HV_NGAYSINH" Type="datetime" />
-          <Property Name="HV_DIACHI" Type="varchar" MaxLength="200" />
+          <Property Name="HV_DIACHI" Type="nvarchar" MaxLength="200" />
           <Property Name="HV_SDT" Type="char" MaxLength="15" />
           <Property Name="HV_EMAIL" Type="varchar" MaxLength="100" />
           <Property Name="HV_MATKHAU" Type="varchar" MaxLength="30" />
@@ -50,7 +50,7 @@
             <PropertyRef Name="HKNH_MAHKNH" />
           </Key>
           <Property Name="HKNH_MAHKNH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HKNH_TENHK" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="HKNH_TENHK" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="HKNH_NAMHOC" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="LOAI_LOP">
@@ -58,7 +58,8 @@
             <PropertyRef Name="LL_MALOAI" />
           </Key>
           <Property Name="LL_MALOAI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LL_TENLOAILOP" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LL_TENLOAILOP" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Lop_TrinhDo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LOP">
           <Key>
@@ -67,7 +68,7 @@
           <Property Name="L_MALOP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LL_MALOAI" Type="int" Nullable="false" />
           <Property Name="GV_MAGV" Type="int" Nullable="false" />
-          <Property Name="L_TENLOP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="L_TENLOP" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="L_SISO" Type="tinyint" />
           <Property Name="L_NGAYBD" Type="datetime" Nullable="false" />
           <Property Name="L_NGAYKT" Type="datetime" Nullable="false" />
@@ -115,8 +116,15 @@
           <Property Name="L_MALOP" Type="int" Nullable="false" />
           <Property Name="HKNH_MAHKNH" Type="int" Nullable="false" />
           <Property Name="PH_MAPHONG" Type="int" Nullable="false" />
-          <Property Name="TKB_THUTRONGTUAN" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="TKB_GHICHU" Type="varchar" MaxLength="500" />
+          <Property Name="TKB_THUTRONGTUAN" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="TKB_GHICHU" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TRINH_DO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="tenTD" Type="varchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
           <End Role="NHOM_NGUOI_DUNG" Type="Self.NHOM_NGUOI_DUNG" Multiplicity="1" />
@@ -127,6 +135,30 @@
             </Principal>
             <Dependent Role="GIAO_VIEN">
               <PropertyRef Name="NND_MANHOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAOVIEN_TRINHDO">
+          <End Role="TRINH_DO" Type="Self.TRINH_DO" Multiplicity="0..1" />
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRINH_DO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GIAO_VIEN">
+              <PropertyRef Name="GV_TRINHDOTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoaiLop_TrinhDo">
+          <End Role="TRINH_DO" Type="Self.TRINH_DO" Multiplicity="1" />
+          <End Role="LOAI_LOP" Type="Self.LOAI_LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRINH_DO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOAI_LOP">
+              <PropertyRef Name="Lop_TrinhDo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -238,9 +270,18 @@
           <EntitySet Name="PHONG_HOC" EntityType="Self.PHONG_HOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THOI_KHOA_BIEU" EntityType="Self.THOI_KHOA_BIEU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRINH_DO" EntityType="Self.TRINH_DO" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" Association="Self.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
             <End Role="NHOM_NGUOI_DUNG" EntitySet="NHOM_NGUOI_DUNG" />
             <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAOVIEN_TRINHDO" Association="Self.FK_GIAOVIEN_TRINHDO">
+            <End Role="TRINH_DO" EntitySet="TRINH_DO" />
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoaiLop_TrinhDo" Association="Self.FK_LoaiLop_TrinhDo">
+            <End Role="TRINH_DO" EntitySet="TRINH_DO" />
+            <End Role="LOAI_LOP" EntitySet="LOAI_LOP" />
           </AssociationSet>
           <AssociationSet Name="FK_LOP_GIANGDAY_GIAO_VIE" Association="Self.FK_LOP_GIANGDAY_GIAO_VIE">
             <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
@@ -285,7 +326,7 @@
             <PropertyRef Name="BH_MABH" />
           </Key>
           <Property Name="BH_MABH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BH_TENBH" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BH_TENBH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BH_GIOHOC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BH_GIOTAN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="Self.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" FromRole="BUOI_HOC" ToRole="THOI_KHOA_BIEU" />
@@ -296,16 +337,17 @@
           </Key>
           <Property Name="GV_MAGV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NND_MANHOM" Type="Int32" Nullable="false" />
-          <Property Name="GV_HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GV_HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GV_CCCD" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="GV_GIOITINH" Type="Boolean" Nullable="false" />
           <Property Name="GV_NGAYSINH" Type="DateTime" Precision="3" />
-          <Property Name="GV_DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="GV_DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="GV_SDT" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="GV_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="GV_MATKHAU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="GV_TRINHDOTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GV_TRINHDOTA" Type="Int32" />
           <NavigationProperty Name="NHOM_NGUOI_DUNG" Relationship="Self.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" FromRole="GIAO_VIEN" ToRole="NHOM_NGUOI_DUNG" />
+          <NavigationProperty Name="TRINH_DO" Relationship="Self.FK_GIAOVIEN_TRINHDO" FromRole="GIAO_VIEN" ToRole="TRINH_DO" />
           <NavigationProperty Name="LOPs" Relationship="Self.FK_LOP_GIANGDAY_GIAO_VIE" FromRole="GIAO_VIEN" ToRole="LOP" />
         </EntityType>
         <EntityType Name="HOC_VIEN">
@@ -313,11 +355,11 @@
             <PropertyRef Name="HV_MAHV" />
           </Key>
           <Property Name="HV_MAHV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HV_HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HV_HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HV_CCCD" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
           <Property Name="HV_GIOITINH" Type="Boolean" />
           <Property Name="HV_NGAYSINH" Type="DateTime" Precision="3" />
-          <Property Name="HV_DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="HV_DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="HV_SDT" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
           <Property Name="HV_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="HV_MATKHAU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -329,7 +371,7 @@
             <PropertyRef Name="HKNH_MAHKNH" />
           </Key>
           <Property Name="HKNH_MAHKNH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HKNH_TENHK" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HKNH_TENHK" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HKNH_NAMHOC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="Self.FK_THOI_KHO_COHKNH_HOCKY_NA" FromRole="HOCKY_NAMHOC" ToRole="THOI_KHOA_BIEU" />
         </EntityType>
@@ -338,7 +380,9 @@
             <PropertyRef Name="LL_MALOAI" />
           </Key>
           <Property Name="LL_MALOAI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LL_TENLOAILOP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LL_TENLOAILOP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lop_TrinhDo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TRINH_DO" Relationship="Self.FK_LoaiLop_TrinhDo" FromRole="LOAI_LOP" ToRole="TRINH_DO" />
           <NavigationProperty Name="LOPs" Relationship="Self.FK_LOP_THUOCLOAI_LOAI_LOP" FromRole="LOAI_LOP" ToRole="LOP" />
         </EntityType>
         <EntityType Name="LOP">
@@ -348,7 +392,7 @@
           <Property Name="L_MALOP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LL_MALOAI" Type="Int32" Nullable="false" />
           <Property Name="GV_MAGV" Type="Int32" Nullable="false" />
-          <Property Name="L_TENLOP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="L_TENLOP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="L_SISO" Type="Byte" />
           <Property Name="L_NGAYBD" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="L_NGAYKT" Type="DateTime" Nullable="false" Precision="3" />
@@ -404,12 +448,21 @@
           <Property Name="L_MALOP" Type="Int32" Nullable="false" />
           <Property Name="HKNH_MAHKNH" Type="Int32" Nullable="false" />
           <Property Name="PH_MAPHONG" Type="Int32" Nullable="false" />
-          <Property Name="TKB_THUTRONGTUAN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TKB_GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TKB_THUTRONGTUAN" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TKB_GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BUOI_HOC" Relationship="Self.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" FromRole="THOI_KHOA_BIEU" ToRole="BUOI_HOC" />
           <NavigationProperty Name="HOCKY_NAMHOC" Relationship="Self.FK_THOI_KHO_COHKNH_HOCKY_NA" FromRole="THOI_KHOA_BIEU" ToRole="HOCKY_NAMHOC" />
           <NavigationProperty Name="LOP" Relationship="Self.FK_THOI_KHO_TKBCHOLOP_LOP" FromRole="THOI_KHOA_BIEU" ToRole="LOP" />
           <NavigationProperty Name="PHONG_HOC" Relationship="Self.FK_THOI_KHO_HOCTAIPHO_PHONG_HO" FromRole="THOI_KHOA_BIEU" ToRole="PHONG_HOC" />
+        </EntityType>
+        <EntityType Name="TRINH_DO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="tenTD" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GIAO_VIEN" Relationship="Self.FK_GIAOVIEN_TRINHDO" FromRole="TRINH_DO" ToRole="GIAO_VIEN" />
+          <NavigationProperty Name="LOAI_LOP" Relationship="Self.FK_LoaiLop_TrinhDo" FromRole="TRINH_DO" ToRole="LOAI_LOP" />
         </EntityType>
         <Association Name="FK_THOI_KHO_COBUOIHOC_BUOI_HOC">
           <End Role="BUOI_HOC" Type="Self.BUOI_HOC" Multiplicity="1" />
@@ -432,6 +485,18 @@
             </Principal>
             <Dependent Role="GIAO_VIEN">
               <PropertyRef Name="NND_MANHOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAOVIEN_TRINHDO">
+          <End Role="TRINH_DO" Type="Self.TRINH_DO" Multiplicity="0..1" />
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRINH_DO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GIAO_VIEN">
+              <PropertyRef Name="GV_TRINHDOTA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -468,6 +533,18 @@
             </Principal>
             <Dependent Role="THOI_KHOA_BIEU">
               <PropertyRef Name="HKNH_MAHKNH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoaiLop_TrinhDo">
+          <End Role="TRINH_DO" Type="Self.TRINH_DO" Multiplicity="1" />
+          <End Role="LOAI_LOP" Type="Self.LOAI_LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRINH_DO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOAI_LOP">
+              <PropertyRef Name="Lop_TrinhDo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -531,12 +608,17 @@
           <EntitySet Name="PHONG_HOC" EntityType="Self.PHONG_HOC" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="THOI_KHOA_BIEU" EntityType="Self.THOI_KHOA_BIEU" />
+          <EntitySet Name="TRINH_DO" EntityType="Self.TRINH_DO" />
           <AssociationSet Name="FK_THOI_KHO_COBUOIHOC_BUOI_HOC" Association="Self.FK_THOI_KHO_COBUOIHOC_BUOI_HOC">
             <End Role="BUOI_HOC" EntitySet="BUOI_HOC" />
             <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
           </AssociationSet>
           <AssociationSet Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" Association="Self.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
             <End Role="NHOM_NGUOI_DUNG" EntitySet="NHOM_NGUOI_DUNG" />
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAOVIEN_TRINHDO" Association="Self.FK_GIAOVIEN_TRINHDO">
+            <End Role="TRINH_DO" EntitySet="TRINH_DO" />
             <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
           </AssociationSet>
           <AssociationSet Name="FK_LOP_GIANGDAY_GIAO_VIE" Association="Self.FK_LOP_GIANGDAY_GIAO_VIE">
@@ -550,6 +632,10 @@
           <AssociationSet Name="FK_THOI_KHO_COHKNH_HOCKY_NA" Association="Self.FK_THOI_KHO_COHKNH_HOCKY_NA">
             <End Role="HOCKY_NAMHOC" EntitySet="HOCKY_NAMHOC" />
             <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoaiLop_TrinhDo" Association="Self.FK_LoaiLop_TrinhDo">
+            <End Role="TRINH_DO" EntitySet="TRINH_DO" />
+            <End Role="LOAI_LOP" EntitySet="LOAI_LOP" />
           </AssociationSet>
           <AssociationSet Name="FK_LOP_THUOCLOAI_LOAI_LOP" Association="Self.FK_LOP_THUOCLOAI_LOAI_LOP">
             <End Role="LOAI_LOP" EntitySet="LOAI_LOP" />
@@ -631,6 +717,7 @@
               <MappingFragment StoreEntitySet="LOAI_LOP">
                 <ScalarProperty Name="LL_MALOAI" ColumnName="LL_MALOAI" />
                 <ScalarProperty Name="LL_TENLOAILOP" ColumnName="LL_TENLOAILOP" />
+                <ScalarProperty Name="Lop_TrinhDo" ColumnName="Lop_TrinhDo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -694,6 +781,14 @@
                 <ScalarProperty Name="PH_MAPHONG" ColumnName="PH_MAPHONG" />
                 <ScalarProperty Name="TKB_THUTRONGTUAN" ColumnName="TKB_THUTRONGTUAN" />
                 <ScalarProperty Name="TKB_GHICHU" ColumnName="TKB_GHICHU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRINH_DO">
+            <EntityTypeMapping TypeName="QLTTAVModel.TRINH_DO">
+              <MappingFragment StoreEntitySet="TRINH_DO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tenTD" ColumnName="tenTD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
