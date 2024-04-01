@@ -1,0 +1,153 @@
+﻿@model TTAnhNgu.HOC_VIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
+    QLTTAVEntities db = new QLTTAVEntities();
+}
+
+<div>
+    <div class="container p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg">
+                <div class="card border-0 rounded-lg">
+                    <div><h3 class="font-weight-light my-4">Chi tiết học viên</h3></div>
+                    <hr />
+                    <div class="card-body p-0">
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Tên học viên</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_HOTEN)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">CCCD</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_CCCD)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Giới tính</label>
+                            @if (Model.HV_GIOITINH == false)
+                            {
+                                <div class="col-md-12">
+                                    Nam
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-12">
+                                    Nữ
+                                </div>
+                            }
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Ngày sinh</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_NGAYSINH)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Nơi ở</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_DIACHI)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Số điện thoại</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_SDT)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Email</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_EMAIL)
+                            </div>
+                        </div>
+                        @Html.HiddenFor(model => model.HV_MATKHAU)
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Ảnh đại diện</label>
+                            <div class="col-md-12">
+                                @if (Model.HV_HINHANH == null)
+                                {
+                                    <div class="col-md-12">
+                                        <img src="@Url.Content("~/Content/Assets/Admin/assets/img/student.png" )" alt="cover page" width="120" height="120" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-12">
+                                        <img src="@Url.Content("~/Content/Assets/Admin/assets/img/" + @Model.HV_HINHANH )" alt="cover page" width="120" height="120" />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <label class="control-label col-md-3 align-self-center fw-bold pb-1">Lớp học đã đăng ký</label>
+                        <div class="form-group mb-3 row align-items-center border border-primary rounded-2">
+                            <div class="p-1"></div>
+                            <div class="col-md-12">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th><label class="control-label col-md-3 align-self-center">Khóa học</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Trình độ</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Tên Giáo viên dạy</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Ngày đăng ký</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Đã đóng tiền</label></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.NGAY_DANG_KY.Count > 0)
+                                        {
+                                            foreach (var item in Model.NGAY_DANG_KY)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @*@Html.ActionLink("Edit", "EditGroup", new { id = item.NND_MANHOM }) |*@
+                                                        @*@Html.ActionLink("Details", "Details", new { id = item.NND_MANHOM }) |*@
+                                                        @*@Html.ActionLink("Delete", "Delete", new { id = item.NND_MANHOM })*@
+                                                        @item.LOP.LOAI_LOP.LL_TENLOAILOP
+                                                    </td>
+                                                    <td>
+                                                        @item.LOP.LOAI_LOP.TRINH_DO.TD_TENTRINHDO
+                                                    </td>
+                                                    <td>
+                                                        @*@item.LOP.GIAO_VIEN.GV_HOTEN*@
+                                                        @Html.ActionLink(@item.LOP.GIAO_VIEN.GV_HOTEN, "../Teacher/EditTeacher", new { id = item.LOP.GIAO_VIEN.GV_MAGV }, new { @style = "text-decoration:none;" })
+                                                    </td>
+                                                    <td>
+                                                        @item.NDK_NGAYDK
+                                                    </td>
+                                                    @if (item.NDK_CODK == true)
+                                                    {
+                                                        <td>
+                                                            <p style="color: green;">Đã đóng tiền</p>
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>
+                                                            <p style="color: red;">Chưa đóng tiền</p>
+                                                        </td>
+                                                    }
+
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center py-1">
+                        <div class="d-flex align-items-center justify-content-center mb-0">
+                            @Html.ActionLink("Quay trở về", "getListStudent", null, new { @class = "small m-1", @style = "text-decoration:none;" })
+                            @Html.ActionLink("Chỉnh sửa", "EditStudent", new { id = Model.HV_MAHV }, new { @class = "btn btn-primary m-1" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

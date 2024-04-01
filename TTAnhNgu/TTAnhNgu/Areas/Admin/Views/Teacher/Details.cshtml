@@ -1,0 +1,91 @@
+﻿@model TTAnhNgu.GIAO_VIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
+}
+
+<div>
+    <div class="container p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg">
+                <div class="card border-0 rounded-lg">
+                    <div><h3 class="font-weight-light my-4">Chi tiết giáo viên</h3></div>
+                    <hr />
+                    <div class="card-body p-0">
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Tên giáo viên</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.GV_HOTEN)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">CCCD</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.GV_CCCD)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Giới tính</label>
+                            @if (Model.GV_GIOITINH == false)
+                            {
+                                <div class="col-md-12">
+                                    Nam
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-12">
+                                    Nữ
+                                </div>
+                            }
+
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Ngày sinh</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.GV_NGAYSINH)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Địa chỉ</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.GV_DIACHI)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Số điện thoại</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.GV_SDT)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Email</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.GV_EMAIL)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Trình độ tiếng anh</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.GV_TRINHDOTA)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Nhóm người dùng</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.NHOM_NGUOI_DUNG.NND_TENNHOMND)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center py-1">
+                        <div class="d-flex align-items-center justify-content-center mb-0">
+                            @Html.ActionLink("Quay trở về", "getListTeacher", null, new { @class = "small m-1", @style = "text-decoration:none;" })
+                            @Html.ActionLink("Chỉnh sửa", "EditTeacher", new { id = Model.GV_MAGV }, new { @class = "btn btn-primary m-1" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -27,12 +27,25 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user fa-fw"></i>
+                    @{
+                        var account = (GIAO_VIEN)HttpContext.Current.Session["user"];
+                        if (account != null)
+                        {
+                            <span>@account.GV_HOTEN</span>
+                        }
+                        else
+                        {
+                            <span></span>
+                        }
+                    }
+                </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="/Admin/Home/Logout">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -42,14 +55,19 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                       
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="@Url.Action("../Group/getListGroup")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-user-group"></i></div>
+                            Group
+                        </a>
+                        <hr>
+
+                        <a class="nav-link" href="@Url.Action("../Teacher/getListTeacher")">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
                             Teacher
                         </a>
                         <hr>
 
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="@Url.Action("../Student/getListStudent")">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
                             Student
                         </a>
@@ -71,11 +89,11 @@
                         <hr>
                     </div>
                 </div>
-              
+
             </nav>
         </div>
         <div id="layoutSidenav_content">@RenderBody()</div>
-      
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="~/Content/Assets/Admin/js/scripts.js"></script>
@@ -84,5 +102,7 @@
     <script src="~/Content/Assets/Admin/assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="~/Content/Assets/Admin/js/datatables-simple-demo.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

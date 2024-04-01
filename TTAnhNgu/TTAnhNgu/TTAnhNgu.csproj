@@ -126,12 +126,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AdminAuthentication.cs" />
+    <Compile Include="App_Start\AdminAuthorization.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\GroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TeacherController.cs" />
     <Compile Include="Areas\User\Controllers\HomeController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="BUOI_HOC.cs">
@@ -380,6 +385,23 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Group\getListGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\Group\CreateGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\Group\EditGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\Group\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Group\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\getListTeacher.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\CreateTeacher.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\EditTeacher.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\getListStudent.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\CreateStudent.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\EditStudent.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Error.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\fontawesome\all.min.js" />

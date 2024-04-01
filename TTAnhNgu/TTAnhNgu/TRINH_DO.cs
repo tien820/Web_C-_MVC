@@ -21,8 +21,8 @@ namespace TTAnhNgu
             this.LOAI_LOP = new HashSet<LOAI_LOP>();
         }
     
-        public int id { get; set; }
-        public string tenTD { get; set; }
+        public int TD_MATD { get; set; }
+        public string TD_TENTRINHDO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GIAO_VIEN> GIAO_VIEN { get; set; }

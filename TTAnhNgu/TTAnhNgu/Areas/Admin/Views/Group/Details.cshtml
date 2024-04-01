@@ -1,0 +1,80 @@
+﻿@model TTAnhNgu.NHOM_NGUOI_DUNG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
+}
+
+<div>
+    <div class="container p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg">
+                <div class="card border-0 rounded-lg">
+                    <div><h3 class="font-weight-light my-4">Chi tiết nhóm người dùng</h3></div>
+                    <hr />
+                    <div class="card-body p-0">
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Tên nhóm</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.NND_TENNHOMND)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <label class="control-label col-md-3 align-self-center fw-bold pb-1">Người dùng thuộc nhóm &#x2606 @Model.NND_TENNHOMND &#x2606</label>
+                        <div class="form-group mb-3 row align-items-center border border-primary rounded-2">
+                            <div class="p-1"></div>
+                            <div class="col-md-12">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th><label class="control-label col-md-3 align-self-center">Tên giáo viên</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Căn cước công dân</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Số điện thoại</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Email</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Trình độ tiếng anh</label></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.GIAO_VIEN.Count > 0)
+                                        {
+                                            foreach (var item in Model.GIAO_VIEN)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @*@Html.ActionLink("Edit", "EditGroup", new { id = item.NND_MANHOM }) |*@
+                                                        @*@Html.ActionLink("Details", "Details", new { id = item.NND_MANHOM }) |*@
+                                                        @*@Html.ActionLink("Delete", "Delete", new { id = item.NND_MANHOM })*@
+                                                        @item.GV_HOTEN
+                                                    </td>
+                                                    <td>
+                                                        @item.GV_CCCD
+                                                    </td>
+                                                    <td>
+                                                        @item.GV_SDT
+                                                    </td>
+                                                    <td>
+                                                        @item.GV_EMAIL
+                                                    </td>
+                                                    <td>
+                                                        @item.GV_TRINHDOTA
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center py-1">
+                        <div class="d-flex align-items-center justify-content-center mb-0">
+                            @Html.ActionLink("Quay trở về", "getListGroup", null, new { @class = "small m-1", @style = "text-decoration:none;" })
+                            @Html.ActionLink("Chỉnh sửa", "EditGroup", new { id = Model.NND_MANHOM }, new { @class = "btn btn-primary m-1" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

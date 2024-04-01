@@ -1,0 +1,112 @@
+﻿@model IEnumerable<TTAnhNgu.HOC_VIEN>
+
+@{
+    ViewBag.Title = "getListStudent";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
+    var account = (GIAO_VIEN)HttpContext.Current.Session["user"];
+}
+
+<div>
+    <div>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Học viên</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <h5>
+                @if (account.NHOM_NGUOI_DUNG.NND_TENNHOMND.ToUpper() == "ADMIN" && Session["user"] != null)
+                {
+                    @Html.ActionLink("Thêm mới", "CreateStudent", null, new { @class = "btn btn-success", @style = "text-decoration:none;" })
+                }
+
+            </h5>
+            <div class="card mb-4">
+                @*<div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable Example
+                    </div>*@
+                <div class="card-body">
+                    @*<div class="table-responsive">*@
+                    @*<table class="table table-bordered mb-0">*@
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th><label class="control-label align-self-center">Họ tên</label></th>
+                                <th><label class="control-label align-self-center">CCCD</label></th>
+                                <th><label class="control-label align-self-center">Giới tính</label></th>
+                                <th><label class="control-label align-self-center">Ngày sinh</label></th>
+                                <th><label class="control-label align-self-center">Địa chỉ</label></th>
+                                <th><label class="control-label align-self-center">Số điện thoại</label></th>
+                                <th><label class="control-label align-self-center">Email</label></th>
+                                <th><label class="control-label align-self-center">Hình đại diện</label></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HV_HOTEN)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HV_CCCD)
+                                    </td>
+                                    @if (item.HV_GIOITINH == false)
+                                    {
+                                        <td>
+                                            Nam
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            Nữ
+                                        </td>
+                                    }
+                                    <td>
+                                        @string.Format("{0:dd-MM-yyyy}", item.HV_NGAYSINH)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HV_DIACHI)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HV_SDT)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HV_EMAIL)
+                                    </td>
+                                    @Html.HiddenFor(modelItem => item.HV_MATKHAU)
+                                    @if (item.HV_HINHANH == null)
+                                    {
+                                        <td>
+                                            <img class="mx-auto d-block" src="@Url.Content("~/Content/Assets/Admin/assets/img/student.png" )" alt="cover page" width="75" height="75" />
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <img class="mx-auto d-block" src="@Url.Content("~/Content/Assets/Admin/assets/img/" + item.HV_HINHANH)" alt="cover page" width="75" height="75" />
+                                        </td>
+                                    }
+                                <td>
+                                    @if (account.NHOM_NGUOI_DUNG.NND_TENNHOMND.ToUpper() == "ADMIN" && Session["user"] != null)
+                                    {
+                                        @Html.ActionLink("Edit", "EditStudent", new { id = item.HV_MAHV }, new { @class = "btn btn-warning mx-1" })
+                                        @Html.ActionLink("Details", "Details", new { id = item.HV_MAHV }, new { @class = "btn btn-info mx-1" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.HV_MAHV }, new { @class = "btn btn-danger mx-1" })
+                                    }
+
+                                </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @*</div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

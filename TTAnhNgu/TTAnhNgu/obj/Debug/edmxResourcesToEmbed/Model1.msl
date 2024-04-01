@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLTTAVModelStoreContainer" CdmEntityContainer="QLTTAVEntities">
+    <EntitySetMapping Name="BUOI_HOC">
+      <EntityTypeMapping TypeName="QLTTAVModel.BUOI_HOC">
+        <MappingFragment StoreEntitySet="BUOI_HOC">
+          <ScalarProperty Name="BH_GIOTAN" ColumnName="BH_GIOTAN" />
+          <ScalarProperty Name="BH_GIOHOC" ColumnName="BH_GIOHOC" />
+          <ScalarProperty Name="BH_TENBH" ColumnName="BH_TENBH" />
+          <ScalarProperty Name="BH_MABH" ColumnName="BH_MABH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GIAO_VIEN">
+      <EntityTypeMapping TypeName="QLTTAVModel.GIAO_VIEN">
+        <MappingFragment StoreEntitySet="GIAO_VIEN">
+          <ScalarProperty Name="GV_TRINHDOTA" ColumnName="GV_TRINHDOTA" />
+          <ScalarProperty Name="GV_MATKHAU" ColumnName="GV_MATKHAU" />
+          <ScalarProperty Name="GV_EMAIL" ColumnName="GV_EMAIL" />
+          <ScalarProperty Name="GV_SDT" ColumnName="GV_SDT" />
+          <ScalarProperty Name="GV_DIACHI" ColumnName="GV_DIACHI" />
+          <ScalarProperty Name="GV_NGAYSINH" ColumnName="GV_NGAYSINH" />
+          <ScalarProperty Name="GV_GIOITINH" ColumnName="GV_GIOITINH" />
+          <ScalarProperty Name="GV_CCCD" ColumnName="GV_CCCD" />
+          <ScalarProperty Name="GV_HOTEN" ColumnName="GV_HOTEN" />
+          <ScalarProperty Name="NND_MANHOM" ColumnName="NND_MANHOM" />
+          <ScalarProperty Name="GV_MAGV" ColumnName="GV_MAGV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOC_VIEN">
+      <EntityTypeMapping TypeName="QLTTAVModel.HOC_VIEN">
+        <MappingFragment StoreEntitySet="HOC_VIEN">
+          <ScalarProperty Name="HV_HINHANH" ColumnName="HV_HINHANH" />
+          <ScalarProperty Name="HV_MATKHAU" ColumnName="HV_MATKHAU" />
+          <ScalarProperty Name="HV_EMAIL" ColumnName="HV_EMAIL" />
+          <ScalarProperty Name="HV_SDT" ColumnName="HV_SDT" />
+          <ScalarProperty Name="HV_DIACHI" ColumnName="HV_DIACHI" />
+          <ScalarProperty Name="HV_NGAYSINH" ColumnName="HV_NGAYSINH" />
+          <ScalarProperty Name="HV_GIOITINH" ColumnName="HV_GIOITINH" />
+          <ScalarProperty Name="HV_CCCD" ColumnName="HV_CCCD" />
+          <ScalarProperty Name="HV_HOTEN" ColumnName="HV_HOTEN" />
+          <ScalarProperty Name="HV_MAHV" ColumnName="HV_MAHV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOCKY_NAMHOC">
+      <EntityTypeMapping TypeName="QLTTAVModel.HOCKY_NAMHOC">
+        <MappingFragment StoreEntitySet="HOCKY_NAMHOC">
+          <ScalarProperty Name="HKNH_NAMHOC" ColumnName="HKNH_NAMHOC" />
+          <ScalarProperty Name="HKNH_TENHK" ColumnName="HKNH_TENHK" />
+          <ScalarProperty Name="HKNH_MAHKNH" ColumnName="HKNH_MAHKNH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAI_LOP">
+      <EntityTypeMapping TypeName="QLTTAVModel.LOAI_LOP">
+        <MappingFragment StoreEntitySet="LOAI_LOP">
+          <ScalarProperty Name="LL_TENLOAILOP" ColumnName="LL_TENLOAILOP" />
+          <ScalarProperty Name="TD_MATD" ColumnName="TD_MATD" />
+          <ScalarProperty Name="LL_MALOAI" ColumnName="LL_MALOAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOPs">
+      <EntityTypeMapping TypeName="QLTTAVModel.LOP">
+        <MappingFragment StoreEntitySet="LOP">
+          <ScalarProperty Name="L_NGAYKT" ColumnName="L_NGAYKT" />
+          <ScalarProperty Name="L_NGAYBD" ColumnName="L_NGAYBD" />
+          <ScalarProperty Name="L_SISO" ColumnName="L_SISO" />
+          <ScalarProperty Name="L_TENLOP" ColumnName="L_TENLOP" />
+          <ScalarProperty Name="GV_MAGV" ColumnName="GV_MAGV" />
+          <ScalarProperty Name="LL_MALOAI" ColumnName="LL_MALOAI" />
+          <ScalarProperty Name="L_MALOP" ColumnName="L_MALOP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGAY_DANG_KY">
+      <EntityTypeMapping TypeName="QLTTAVModel.NGAY_DANG_KY">
+        <MappingFragment StoreEntitySet="NGAY_DANG_KY">
+          <ScalarProperty Name="NDK_CODK" ColumnName="NDK_CODK" />
+          <ScalarProperty Name="NDK_NGAYDK" ColumnName="NDK_NGAYDK" />
+          <ScalarProperty Name="L_MALOP" ColumnName="L_MALOP" />
+          <ScalarProperty Name="HV_MAHV" ColumnName="HV_MAHV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHOM_NGUOI_DUNG">
+      <EntityTypeMapping TypeName="QLTTAVModel.NHOM_NGUOI_DUNG">
+        <MappingFragment StoreEntitySet="NHOM_NGUOI_DUNG">
+          <ScalarProperty Name="NND_TENNHOMND" ColumnName="NND_TENNHOMND" />
+          <ScalarProperty Name="NND_MANHOM" ColumnName="NND_MANHOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHONG_HOC">
+      <EntityTypeMapping TypeName="QLTTAVModel.PHONG_HOC">
+        <MappingFragment StoreEntitySet="PHONG_HOC">
+          <ScalarProperty Name="PH_TENPHONG" ColumnName="PH_TENPHONG" />
+          <ScalarProperty Name="PH_MAPHONG" ColumnName="PH_MAPHONG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QLTTAVModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THOI_KHOA_BIEU">
+      <EntityTypeMapping TypeName="QLTTAVModel.THOI_KHOA_BIEU">
+        <MappingFragment StoreEntitySet="THOI_KHOA_BIEU">
+          <ScalarProperty Name="TKB_GHICHU" ColumnName="TKB_GHICHU" />
+          <ScalarProperty Name="TKB_THUTRONGTUAN" ColumnName="TKB_THUTRONGTUAN" />
+          <ScalarProperty Name="PH_MAPHONG" ColumnName="PH_MAPHONG" />
+          <ScalarProperty Name="HKNH_MAHKNH" ColumnName="HKNH_MAHKNH" />
+          <ScalarProperty Name="L_MALOP" ColumnName="L_MALOP" />
+          <ScalarProperty Name="BH_MABH" ColumnName="BH_MABH" />
+          <ScalarProperty Name="TKB_MATKB" ColumnName="TKB_MATKB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRINH_DO">
+      <EntityTypeMapping TypeName="QLTTAVModel.TRINH_DO">
+        <MappingFragment StoreEntitySet="TRINH_DO">
+          <ScalarProperty Name="TD_TENTRINHDO" ColumnName="TD_TENTRINHDO" />
+          <ScalarProperty Name="TD_MATD" ColumnName="TD_MATD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

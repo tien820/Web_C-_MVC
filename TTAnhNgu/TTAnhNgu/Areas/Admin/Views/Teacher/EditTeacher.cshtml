@@ -1,0 +1,116 @@
+﻿@model TTAnhNgu.GIAO_VIEN
+
+@{
+    ViewBag.Title = "EditTeacher";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
+    QLTTAVEntities db = new QLTTAVEntities();
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="container p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg">
+                    <div class="card border-0 rounded-lg">
+                        <div><h3 class="font-weight-light my-4">Chỉnh sửa giáo viên</h3></div>
+                        <div class="card-body p-0">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.GV_MAGV)
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Tên giáo viên</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.GV_HOTEN, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.GV_HOTEN, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">CCCD</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.GV_CCCD, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.GV_CCCD, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Giới tính</label>
+                                <div class="col-md-12">
+                                    @*<input type="radio" name="GV_GIOITINH" value=0 />Nam*@
+                                    @*<input type="radio" name="GV_GIOITINH" value=1 />Nữ*@
+                                    @Html.Label("Nam")
+                                    @Html.RadioButtonFor(model => model.GV_GIOITINH, false)
+                                    @Html.Label("Nữ")
+                                    @Html.RadioButtonFor(model => model.GV_GIOITINH, true)
+                                    @Html.ValidationMessageFor(model => model.GV_GIOITINH, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Ngày sinh</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.GV_NGAYSINH, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.GV_NGAYSINH, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Địa chỉ</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.GV_DIACHI, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.GV_DIACHI, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Số điện thoại</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.GV_SDT, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.GV_SDT, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Email</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.GV_EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.GV_EMAIL, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Mật khẩu</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.GV_MATKHAU, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                    @Html.ValidationMessageFor(model => model.GV_MATKHAU, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Trình độ tiếng anh</label>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.GV_TRINHDOTA, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.GV_TRINHDOTA, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row align-items-center">
+                                <label class="control-label col-md-3 align-self-center">Nhóm người dùng</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" name="NND_MANHOM">
+                                        `    @foreach (var nnd in db.NHOM_NGUOI_DUNG.ToList())
+                                        {
+                                            <option value="@nnd.NND_MANHOM" @Html.Raw(nnd.NND_MANHOM == Model.NND_MANHOM ? "selected" : "")>@nnd.NND_TENNHOMND</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center py-1">
+                            <div class="d-flex align-items-center justify-content-center mb-0">
+                                @Html.ActionLink("Quay trở về", "getListTeacher", null, new { @class = "small m-1", @style = "text-decoration:none;" })
+                                <input type="submit" value="Lưu" class="btn btn-primary m-1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

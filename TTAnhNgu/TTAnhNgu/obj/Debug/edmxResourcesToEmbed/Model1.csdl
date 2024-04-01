@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLTTAVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QLTTAVEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BUOI_HOC" EntityType="QLTTAVModel.BUOI_HOC" />
+    <EntitySet Name="GIAO_VIEN" EntityType="QLTTAVModel.GIAO_VIEN" />
+    <EntitySet Name="HOC_VIEN" EntityType="QLTTAVModel.HOC_VIEN" />
+    <EntitySet Name="HOCKY_NAMHOC" EntityType="QLTTAVModel.HOCKY_NAMHOC" />
+    <EntitySet Name="LOAI_LOP" EntityType="QLTTAVModel.LOAI_LOP" />
+    <EntitySet Name="LOPs" EntityType="QLTTAVModel.LOP" />
+    <EntitySet Name="NGAY_DANG_KY" EntityType="QLTTAVModel.NGAY_DANG_KY" />
+    <EntitySet Name="NHOM_NGUOI_DUNG" EntityType="QLTTAVModel.NHOM_NGUOI_DUNG" />
+    <EntitySet Name="PHONG_HOC" EntityType="QLTTAVModel.PHONG_HOC" />
+    <EntitySet Name="sysdiagrams" EntityType="QLTTAVModel.sysdiagram" />
+    <EntitySet Name="THOI_KHOA_BIEU" EntityType="QLTTAVModel.THOI_KHOA_BIEU" />
+    <EntitySet Name="TRINH_DO" EntityType="QLTTAVModel.TRINH_DO" />
+    <AssociationSet Name="FK_THOI_KHO_COBUOIHOC_BUOI_HOC" Association="QLTTAVModel.FK_THOI_KHO_COBUOIHOC_BUOI_HOC">
+      <End Role="BUOI_HOC" EntitySet="BUOI_HOC" />
+      <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" Association="QLTTAVModel.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
+      <End Role="NHOM_NGUOI_DUNG" EntitySet="NHOM_NGUOI_DUNG" />
+      <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOP_GIANGDAY_GIAO_VIE" Association="QLTTAVModel.FK_LOP_GIANGDAY_GIAO_VIE">
+      <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+      <End Role="LOP" EntitySet="LOPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" Association="QLTTAVModel.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN">
+      <End Role="HOC_VIEN" EntitySet="HOC_VIEN" />
+      <End Role="NGAY_DANG_KY" EntitySet="NGAY_DANG_KY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THOI_KHO_COHKNH_HOCKY_NA" Association="QLTTAVModel.FK_THOI_KHO_COHKNH_HOCKY_NA">
+      <End Role="HOCKY_NAMHOC" EntitySet="HOCKY_NAMHOC" />
+      <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOAI_LOP_COTRINHDO_TRINH_DO" Association="QLTTAVModel.FK_LOAI_LOP_COTRINHDO_TRINH_DO">
+      <End Role="TRINH_DO" EntitySet="TRINH_DO" />
+      <End Role="LOAI_LOP" EntitySet="LOAI_LOP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOP_THUOCLOAI_LOAI_LOP" Association="QLTTAVModel.FK_LOP_THUOCLOAI_LOAI_LOP">
+      <End Role="LOAI_LOP" EntitySet="LOAI_LOP" />
+      <End Role="LOP" EntitySet="LOPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NGAY_DAN_DANGKYLOP_LOP" Association="QLTTAVModel.FK_NGAY_DAN_DANGKYLOP_LOP">
+      <End Role="LOP" EntitySet="LOPs" />
+      <End Role="NGAY_DANG_KY" EntitySet="NGAY_DANG_KY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THOI_KHO_TKBCHOLOP_LOP" Association="QLTTAVModel.FK_THOI_KHO_TKBCHOLOP_LOP">
+      <End Role="LOP" EntitySet="LOPs" />
+      <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THOI_KHO_HOCTAIPHO_PHONG_HO" Association="QLTTAVModel.FK_THOI_KHO_HOCTAIPHO_PHONG_HO">
+      <End Role="PHONG_HOC" EntitySet="PHONG_HOC" />
+      <End Role="THOI_KHOA_BIEU" EntitySet="THOI_KHOA_BIEU" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BUOI_HOC">
+    <Key>
+      <PropertyRef Name="BH_MABH" />
+    </Key>
+    <Property Name="BH_MABH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BH_TENBH" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="BH_GIOHOC" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BH_GIOTAN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="QLTTAVModel.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" FromRole="BUOI_HOC" ToRole="THOI_KHOA_BIEU" />
+  </EntityType>
+  <EntityType Name="GIAO_VIEN">
+    <Key>
+      <PropertyRef Name="GV_MAGV" />
+    </Key>
+    <Property Name="GV_MAGV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NND_MANHOM" Type="Int32" />
+    <Property Name="GV_HOTEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GV_CCCD" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="GV_GIOITINH" Type="Boolean" Nullable="false" />
+    <Property Name="GV_NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GV_DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="GV_SDT" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="GV_EMAIL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GV_MATKHAU" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="GV_TRINHDOTA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHOM_NGUOI_DUNG" Relationship="QLTTAVModel.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" FromRole="GIAO_VIEN" ToRole="NHOM_NGUOI_DUNG" />
+    <NavigationProperty Name="LOPs" Relationship="QLTTAVModel.FK_LOP_GIANGDAY_GIAO_VIE" FromRole="GIAO_VIEN" ToRole="LOP" />
+  </EntityType>
+  <EntityType Name="HOC_VIEN">
+    <Key>
+      <PropertyRef Name="HV_MAHV" />
+    </Key>
+    <Property Name="HV_MAHV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HV_HOTEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HV_CCCD" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="HV_GIOITINH" Type="Boolean" />
+    <Property Name="HV_NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="HV_DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HV_SDT" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="HV_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HV_MATKHAU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="HV_HINHANH" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NGAY_DANG_KY" Relationship="QLTTAVModel.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" FromRole="HOC_VIEN" ToRole="NGAY_DANG_KY" />
+  </EntityType>
+  <EntityType Name="HOCKY_NAMHOC">
+    <Key>
+      <PropertyRef Name="HKNH_MAHKNH" />
+    </Key>
+    <Property Name="HKNH_MAHKNH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HKNH_TENHK" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HKNH_NAMHOC" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="QLTTAVModel.FK_THOI_KHO_COHKNH_HOCKY_NA" FromRole="HOCKY_NAMHOC" ToRole="THOI_KHOA_BIEU" />
+  </EntityType>
+  <EntityType Name="LOAI_LOP">
+    <Key>
+      <PropertyRef Name="LL_MALOAI" />
+    </Key>
+    <Property Name="LL_MALOAI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TD_MATD" Type="Int32" />
+    <Property Name="LL_TENLOAILOP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TRINH_DO" Relationship="QLTTAVModel.FK_LOAI_LOP_COTRINHDO_TRINH_DO" FromRole="LOAI_LOP" ToRole="TRINH_DO" />
+    <NavigationProperty Name="LOPs" Relationship="QLTTAVModel.FK_LOP_THUOCLOAI_LOAI_LOP" FromRole="LOAI_LOP" ToRole="LOP" />
+  </EntityType>
+  <EntityType Name="LOP">
+    <Key>
+      <PropertyRef Name="L_MALOP" />
+    </Key>
+    <Property Name="L_MALOP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LL_MALOAI" Type="Int32" />
+    <Property Name="GV_MAGV" Type="Int32" />
+    <Property Name="L_TENLOP" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="L_SISO" Type="Byte" />
+    <Property Name="L_NGAYBD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="L_NGAYKT" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="GIAO_VIEN" Relationship="QLTTAVModel.FK_LOP_GIANGDAY_GIAO_VIE" FromRole="LOP" ToRole="GIAO_VIEN" />
+    <NavigationProperty Name="LOAI_LOP" Relationship="QLTTAVModel.FK_LOP_THUOCLOAI_LOAI_LOP" FromRole="LOP" ToRole="LOAI_LOP" />
+    <NavigationProperty Name="NGAY_DANG_KY" Relationship="QLTTAVModel.FK_NGAY_DAN_DANGKYLOP_LOP" FromRole="LOP" ToRole="NGAY_DANG_KY" />
+    <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="QLTTAVModel.FK_THOI_KHO_TKBCHOLOP_LOP" FromRole="LOP" ToRole="THOI_KHOA_BIEU" />
+  </EntityType>
+  <EntityType Name="NGAY_DANG_KY">
+    <Key>
+      <PropertyRef Name="HV_MAHV" />
+      <PropertyRef Name="L_MALOP" />
+    </Key>
+    <Property Name="HV_MAHV" Type="Int32" Nullable="false" />
+    <Property Name="L_MALOP" Type="Int32" Nullable="false" />
+    <Property Name="NDK_NGAYDK" Type="DateTime" Precision="0" />
+    <Property Name="NDK_CODK" Type="Boolean" />
+    <NavigationProperty Name="HOC_VIEN" Relationship="QLTTAVModel.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" FromRole="NGAY_DANG_KY" ToRole="HOC_VIEN" />
+    <NavigationProperty Name="LOP" Relationship="QLTTAVModel.FK_NGAY_DAN_DANGKYLOP_LOP" FromRole="NGAY_DANG_KY" ToRole="LOP" />
+  </EntityType>
+  <EntityType Name="NHOM_NGUOI_DUNG">
+    <Key>
+      <PropertyRef Name="NND_MANHOM" />
+    </Key>
+    <Property Name="NND_MANHOM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NND_TENNHOMND" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GIAO_VIEN" Relationship="QLTTAVModel.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" FromRole="NHOM_NGUOI_DUNG" ToRole="GIAO_VIEN" />
+  </EntityType>
+  <EntityType Name="PHONG_HOC">
+    <Key>
+      <PropertyRef Name="PH_MAPHONG" />
+    </Key>
+    <Property Name="PH_MAPHONG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PH_TENPHONG" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="THOI_KHOA_BIEU" Relationship="QLTTAVModel.FK_THOI_KHO_HOCTAIPHO_PHONG_HO" FromRole="PHONG_HOC" ToRole="THOI_KHOA_BIEU" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="THOI_KHOA_BIEU">
+    <Key>
+      <PropertyRef Name="TKB_MATKB" />
+    </Key>
+    <Property Name="TKB_MATKB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BH_MABH" Type="Int32" />
+    <Property Name="L_MALOP" Type="Int32" />
+    <Property Name="HKNH_MAHKNH" Type="Int32" />
+    <Property Name="PH_MAPHONG" Type="Int32" />
+    <Property Name="TKB_THUTRONGTUAN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="TKB_GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BUOI_HOC" Relationship="QLTTAVModel.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" FromRole="THOI_KHOA_BIEU" ToRole="BUOI_HOC" />
+    <NavigationProperty Name="HOCKY_NAMHOC" Relationship="QLTTAVModel.FK_THOI_KHO_COHKNH_HOCKY_NA" FromRole="THOI_KHOA_BIEU" ToRole="HOCKY_NAMHOC" />
+    <NavigationProperty Name="LOP" Relationship="QLTTAVModel.FK_THOI_KHO_TKBCHOLOP_LOP" FromRole="THOI_KHOA_BIEU" ToRole="LOP" />
+    <NavigationProperty Name="PHONG_HOC" Relationship="QLTTAVModel.FK_THOI_KHO_HOCTAIPHO_PHONG_HO" FromRole="THOI_KHOA_BIEU" ToRole="PHONG_HOC" />
+  </EntityType>
+  <EntityType Name="TRINH_DO">
+    <Key>
+      <PropertyRef Name="TD_MATD" />
+    </Key>
+    <Property Name="TD_MATD" Type="Int32" Nullable="false" />
+    <Property Name="TD_TENTRINHDO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LOAI_LOP" Relationship="QLTTAVModel.FK_LOAI_LOP_COTRINHDO_TRINH_DO" FromRole="TRINH_DO" ToRole="LOAI_LOP" />
+  </EntityType>
+  <Association Name="FK_THOI_KHO_COBUOIHOC_BUOI_HOC">
+    <End Type="QLTTAVModel.BUOI_HOC" Role="BUOI_HOC" Multiplicity="0..1" />
+    <End Type="QLTTAVModel.THOI_KHOA_BIEU" Role="THOI_KHOA_BIEU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BUOI_HOC">
+        <PropertyRef Name="BH_MABH" />
+      </Principal>
+      <Dependent Role="THOI_KHOA_BIEU">
+        <PropertyRef Name="BH_MABH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIAO_VIE_THUOCNHOM_NHOM_NGU">
+    <End Type="QLTTAVModel.NHOM_NGUOI_DUNG" Role="NHOM_NGUOI_DUNG" Multiplicity="0..1" />
+    <End Type="QLTTAVModel.GIAO_VIEN" Role="GIAO_VIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHOM_NGUOI_DUNG">
+        <PropertyRef Name="NND_MANHOM" />
+      </Principal>
+      <Dependent Role="GIAO_VIEN">
+        <PropertyRef Name="NND_MANHOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOP_GIANGDAY_GIAO_VIE">
+    <End Type="QLTTAVModel.GIAO_VIEN" Role="GIAO_VIEN" Multiplicity="0..1" />
+    <End Type="QLTTAVModel.LOP" Role="LOP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GIAO_VIEN">
+        <PropertyRef Name="GV_MAGV" />
+      </Principal>
+      <Dependent Role="LOP">
+        <PropertyRef Name="GV_MAGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NGAY_DAN_HOCVIENDK_HOC_VIEN">
+    <End Type="QLTTAVModel.HOC_VIEN" Role="HOC_VIEN" Multiplicity="1" />
+    <End Type="QLTTAVModel.NGAY_DANG_KY" Role="NGAY_DANG_KY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOC_VIEN">
+        <PropertyRef Name="HV_MAHV" />
+      </Principal>
+      <Dependent Role="NGAY_DANG_KY">
+        <PropertyRef Name="HV_MAHV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THOI_KHO_COHKNH_HOCKY_NA">
+    <End Type="QLTTAVModel.HOCKY_NAMHOC" Role="HOCKY_NAMHOC" Multiplicity="0..1" />
+    <End Type="QLTTAVModel.THOI_KHOA_BIEU" Role="THOI_KHOA_BIEU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOCKY_NAMHOC">
+        <PropertyRef Name="HKNH_MAHKNH" />
+      </Principal>
+      <Dependent Role="THOI_KHOA_BIEU">
+        <PropertyRef Name="HKNH_MAHKNH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOAI_LOP_COTRINHDO_TRINH_DO">
+    <End Type="QLTTAVModel.TRINH_DO" Role="TRINH_DO" Multiplicity="0..1" />
+    <End Type="QLTTAVModel.LOAI_LOP" Role="LOAI_LOP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRINH_DO">
+        <PropertyRef Name="TD_MATD" />
+      </Principal>
+      <Dependent Role="LOAI_LOP">
+        <PropertyRef Name="TD_MATD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOP_THUOCLOAI_LOAI_LOP">
+    <End Type="QLTTAVModel.LOAI_LOP" Role="LOAI_LOP" Multiplicity="0..1" />
+    <End Type="QLTTAVModel.LOP" Role="LOP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAI_LOP">
+        <PropertyRef Name="LL_MALOAI" />
+      </Principal>
+      <Dependent Role="LOP">
+        <PropertyRef Name="LL_MALOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NGAY_DAN_DANGKYLOP_LOP">
+    <End Type="QLTTAVModel.LOP" Role="LOP" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QLTTAVModel.NGAY_DANG_KY" Role="NGAY_DANG_KY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOP">
+        <PropertyRef Name="L_MALOP" />
+      </Principal>
+      <Dependent Role="NGAY_DANG_KY">
+        <PropertyRef Name="L_MALOP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THOI_KHO_TKBCHOLOP_LOP">
+    <End Type="QLTTAVModel.LOP" Role="LOP" Multiplicity="0..1" />
+    <End Type="QLTTAVModel.THOI_KHOA_BIEU" Role="THOI_KHOA_BIEU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOP">
+        <PropertyRef Name="L_MALOP" />
+      </Principal>
+      <Dependent Role="THOI_KHOA_BIEU">
+        <PropertyRef Name="L_MALOP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THOI_KHO_HOCTAIPHO_PHONG_HO">
+    <End Type="QLTTAVModel.PHONG_HOC" Role="PHONG_HOC" Multiplicity="0..1" />
+    <End Type="QLTTAVModel.THOI_KHOA_BIEU" Role="THOI_KHOA_BIEU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONG_HOC">
+        <PropertyRef Name="PH_MAPHONG" />
+      </Principal>
+      <Dependent Role="THOI_KHOA_BIEU">
+        <PropertyRef Name="PH_MAPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

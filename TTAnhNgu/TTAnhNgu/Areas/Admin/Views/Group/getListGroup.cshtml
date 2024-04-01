@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TTAnhNgu.NHOM_NGUOI_DUNG>
+
+@{
+    ViewBag.Title = "getListGroup";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
+}
+
+<div>
+    <div>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Nhóm người dùng</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <h5>
+                @Html.ActionLink("Thêm mới", "CreateGroup", null, new { @class = "btn btn-success", @style = "text-decoration:none;" })
+            </h5>
+            <div class="card mb-4">
+                @*<div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        DataTable Example
+                    </div>*@
+                <div class="card-body">
+
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th><label class="control-label col-md-3 align-self-center">Tên nhóm</label></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NND_TENNHOMND)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EditGroup", new { id = item.NND_MANHOM }, new { @class = "btn btn-warning mx-1" })
+                                        @Html.ActionLink("Details", "Details", new { id = item.NND_MANHOM }, new { @class = "btn btn-info mx-1" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.NND_MANHOM }, new { @class = "btn btn-danger mx-1" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

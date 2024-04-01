@@ -5,29 +5,28 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a2610848202440c9add422304ee1d937" Name="Diagram1">
-        <EntityTypeShape EntityType="QLTTAVModel.BUOI_HOC" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.GIAO_VIEN" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.HOC_VIEN" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.HOCKY_NAMHOC" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.LOAI_LOP" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.LOP" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.NGAY_DANG_KY" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.NHOM_NGUOI_DUNG" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.PHONG_HOC" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.sysdiagram" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.THOI_KHOA_BIEU" Width="1.5" PointX="10.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTTAVModel.TRINH_DO" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_GIAOVIEN_TRINHDO" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_LOP_GIANGDAY_GIAO_VIE" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_COHKNH_HOCKY_NA" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_LoaiLop_TrinhDo" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_LOP_THUOCLOAI_LOAI_LOP" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_NGAY_DAN_DANGKYLOP_LOP" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_TKBCHOLOP_LOP" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_HOCTAIPHO_PHONG_HO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLTTAVModel.BUOI_HOC" Width="1.5" PointX="5.25" PointY="9.25" />
+        <EntityTypeShape EntityType="QLTTAVModel.GIAO_VIEN" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="QLTTAVModel.HOC_VIEN" Width="1.5" PointX="8.25" PointY="1" />
+        <EntityTypeShape EntityType="QLTTAVModel.HOCKY_NAMHOC" Width="1.5" PointX="5.25" PointY="12" />
+        <EntityTypeShape EntityType="QLTTAVModel.LOAI_LOP" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="QLTTAVModel.LOP" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="QLTTAVModel.NGAY_DANG_KY" Width="1.5" PointX="10.5" PointY="5.375" />
+        <EntityTypeShape EntityType="QLTTAVModel.NHOM_NGUOI_DUNG" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="QLTTAVModel.PHONG_HOC" Width="1.5" PointX="5.25" PointY="14.5" />
+        <EntityTypeShape EntityType="QLTTAVModel.sysdiagram" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="QLTTAVModel.THOI_KHOA_BIEU" Width="1.5" PointX="7.5" PointY="5" />
+        <EntityTypeShape EntityType="QLTTAVModel.TRINH_DO" Width="1.5" PointX="0.75" PointY="5.75" />
+        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_COBUOIHOC_BUOI_HOC" />
+        <AssociationConnector Association="QLTTAVModel.FK_GIAO_VIE_THUOCNHOM_NHOM_NGU" />
+        <AssociationConnector Association="QLTTAVModel.FK_LOP_GIANGDAY_GIAO_VIE" />
+        <AssociationConnector Association="QLTTAVModel.FK_NGAY_DAN_HOCVIENDK_HOC_VIEN" />
+        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_COHKNH_HOCKY_NA" />
+        <AssociationConnector Association="QLTTAVModel.FK_LOAI_LOP_COTRINHDO_TRINH_DO" />
+        <AssociationConnector Association="QLTTAVModel.FK_LOP_THUOCLOAI_LOAI_LOP" />
+        <AssociationConnector Association="QLTTAVModel.FK_NGAY_DAN_DANGKYLOP_LOP" />
+        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_TKBCHOLOP_LOP" />
+        <AssociationConnector Association="QLTTAVModel.FK_THOI_KHO_HOCTAIPHO_PHONG_HO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

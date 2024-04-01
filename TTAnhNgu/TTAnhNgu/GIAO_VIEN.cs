@@ -30,10 +30,10 @@ namespace TTAnhNgu
         public string GV_SDT { get; set; }
         public string GV_EMAIL { get; set; }
         public string GV_MATKHAU { get; set; }
-        public Nullable<int> GV_TRINHDOTA { get; set; }
+        public string GV_TRINHDOTA { get; set; }
     
         public virtual NHOM_NGUOI_DUNG NHOM_NGUOI_DUNG { get; set; }
-        public virtual TRINH_DO TRINH_DO { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LOP> LOPs { get; set; }
     }

@@ -1,0 +1,189 @@
+﻿@model TTAnhNgu.HOC_VIEN
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
+}
+
+@*<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>HOC_VIEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_HOTEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_HOTEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_CCCD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_CCCD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_GIOITINH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_GIOITINH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_NGAYSINH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_NGAYSINH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_DIACHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_DIACHI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_SDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_MATKHAU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_MATKHAU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HV_HINHANH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HV_HINHANH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>*@
+
+<div>
+    <div class="container p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg">
+                <div class="card border-0 rounded-lg">
+                    <div><h3 class="font-weight-light my-4">Chi tiết học viên</h3></div>
+                    <hr />
+                    <div class="card-body p-0">
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Tên học viên</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_HOTEN)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">CCCD</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_CCCD)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Giới tính</label>
+                            @if (Model.HV_GIOITINH == false)
+                            {
+                                <div class="col-md-12">
+                                    Nam
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-12">
+                                    Nữ
+                                </div>
+                            }
+
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Ngày sinh</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_NGAYSINH)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Địa chỉ</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_DIACHI)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Số điện thoại</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_SDT)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Email</label>
+                            <div class="col-md-12">
+                                @Html.DisplayFor(model => model.HV_EMAIL)
+                            </div>
+                        </div>
+                        <div class="form-group mb-3 row align-items-center">
+                            <label class="control-label col-md-3 align-self-center fw-bold">Hình đại diện</label>
+                            @if (Model.HV_HINHANH == null)
+                            {
+                                <div class="col-md-12">
+                                    <img src="@Url.Content("~/Content/Assets/Admin/assets/img/student.png" )" alt="cover page" width="120" height="120" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-12">
+                                    <img src="@Url.Content("~/Content/Assets/Admin/assets/img/" + @Model.HV_HINHANH )" alt="cover page" width="120" height="120" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer text-center py-1">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="d-flex align-items-center justify-content-center mb-0">
+                                @Html.ActionLink("Quay trở về", "getListStudent", null, new { @class = "small m-1", @style = "text-decoration:none;" })
+                                <input type="submit" value="Xóa" class="btn btn-danger m-1" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
