@@ -4,9 +4,10 @@
     ViewBag.Title = "CreateTeacher";
     Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
     QLTTAVEntities db = new QLTTAVEntities();
+        
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreateTeacher", "Teacher", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div>
@@ -16,7 +17,7 @@
                     <div class="card border-0 rounded-lg">
                         <div><h3 class="font-weight-light my-4">Thêm giáo viên</h3></div>
                         <div class="card-body p-0">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            
                             <div class="form-group mb-3 row align-items-center">
                                 <label class="control-label col-md-3 align-self-center">Tên giáo viên</label>
                                 <div class="col-md-12">
@@ -34,10 +35,10 @@
                             <div class="form-group mb-3 row align-items-center">
                                 <label class="control-label col-md-3 align-self-center">Giới tính</label>
                                 <div class="col-md-12">
-                                    @*<input type="radio" name="GV_GIOITINH" value=0 />Nam*@
-                                    @*<input type="radio" name="GV_GIOITINH" value=1 />Nữ*@
+                                    @*<input type="radio" name="GV_GIOITINH" checked value=0 />Nam
+                                        <input type="radio" name="GV_GIOITINH" value=1 />Nữ*@
                                     @Html.Label("Nam")
-                                    @Html.RadioButtonFor(model => model.GV_GIOITINH, false)
+                                    @Html.RadioButtonFor(model => model.GV_GIOITINH, false, new { @checked = "checked" })
                                     @Html.Label("Nữ")
                                     @Html.RadioButtonFor(model => model.GV_GIOITINH, true)
                                     @Html.ValidationMessageFor(model => model.GV_GIOITINH, "", new { @class = "text-danger" })
@@ -46,7 +47,7 @@
                             <div class="form-group mb-3 row align-items-center">
                                 <label class="control-label col-md-3 align-self-center">Ngày sinh</label>
                                 <div class="col-md-12">
-                                    @Html.EditorFor(model => model.GV_NGAYSINH, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.GV_NGAYSINH, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                                     @Html.ValidationMessageFor(model => model.GV_NGAYSINH, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -68,6 +69,7 @@
                                 <label class="control-label col-md-3 align-self-center">Email</label>
                                 <div class="col-md-12">
                                     @Html.EditorFor(model => model.GV_EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                     @Html.ValidationMessageFor(model => model.GV_EMAIL, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -89,10 +91,10 @@
                                 <label class="control-label col-md-3 align-self-center">Nhóm người dùng</label>
                                 <div class="col-md-12">
                                     <select class="form-control" name="NND_MANHOM">
-                                    `    @foreach (var nnd in db.NHOM_NGUOI_DUNG.ToList())
-                                    {
-                                        <option value="@nnd.NND_MANHOM">@nnd.NND_TENNHOMND</option>
-                                    }
+                                        `    @foreach (var nnd in db.NHOM_NGUOI_DUNG.ToList())
+                                        {
+                                            <option value="@nnd.NND_MANHOM">@nnd.NND_TENNHOMND</option>
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -109,6 +111,7 @@
         </div>
     </div>
 }
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

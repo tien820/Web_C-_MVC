@@ -92,7 +92,8 @@
                                         <tr>
                                             <th><label class="control-label col-md-3 align-self-center">Khóa học</label></th>
                                             <th><label class="control-label col-md-3 align-self-center">Trình độ</label></th>
-                                            <th><label class="control-label col-md-3 align-self-center">Tên Giáo viên dạy</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Tên lớp</label></th>
+                                            <th><label class="control-label col-md-3 align-self-center">Tên giáo viên dạy</label></th>
                                             <th><label class="control-label col-md-3 align-self-center">Ngày đăng ký</label></th>
                                             <th><label class="control-label col-md-3 align-self-center">Đã đóng tiền</label></th>
                                         </tr>
@@ -113,11 +114,14 @@
                                                         @item.LOP.LOAI_LOP.TRINH_DO.TD_TENTRINHDO
                                                     </td>
                                                     <td>
+                                                        @item.LOP.L_TENLOP
+                                                    </td>
+                                                    <td>
                                                         @*@item.LOP.GIAO_VIEN.GV_HOTEN*@
                                                         @Html.ActionLink(@item.LOP.GIAO_VIEN.GV_HOTEN, "../Teacher/EditTeacher", new { id = item.LOP.GIAO_VIEN.GV_MAGV }, new { @style = "text-decoration:none;" })
                                                     </td>
                                                     <td>
-                                                        @item.NDK_NGAYDK
+                                                        @string.Format("{0:dd-MM-yyyy}", item.NDK_NGAYDK)
                                                     </td>
                                                     @if (item.NDK_CODK == true)
                                                     {

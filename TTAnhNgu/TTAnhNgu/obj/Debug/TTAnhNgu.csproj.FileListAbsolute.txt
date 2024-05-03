@@ -156,7 +156,6 @@ D:\DoAnC#\QLTTTA\Web_C-_MVC\TTAnhNgu\TTAnhNgu\bin\roslyn\vbc.exe.config
 D:\DoAnC#\QLTTTA\Web_C-_MVC\TTAnhNgu\TTAnhNgu\bin\roslyn\vbc.rsp
 D:\DoAnC#\QLTTTA\Web_C-_MVC\TTAnhNgu\TTAnhNgu\bin\roslyn\VBCSCompiler.exe
 D:\DoAnC#\QLTTTA\Web_C-_MVC\TTAnhNgu\TTAnhNgu\bin\roslyn\VBCSCompiler.exe.config
-T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.ValueTuple.dll
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\TTAnhNgu.dll.config
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\TTAnhNgu.dll
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\TTAnhNgu.pdb
@@ -199,6 +198,7 @@ T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.Security.Cryptography.Primit
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.Text.Encoding.CodePages.dll
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.Threading.Tasks.Extensions.dll
+T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.ValueTuple.dll
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.Xml.ReaderWriter.dll
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.Xml.XmlDocument.dll
 T:\WebAppNetMVC\TTAnhNgu\TTAnhNgu\bin\roslyn\System.Xml.XPath.dll

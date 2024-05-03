@@ -5,105 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminNavSidenav.cshtml";
 }
 
-@*<h2>EditStudent</h2>
-
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>HOC_VIEN</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.HV_MAHV)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_HOTEN, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HV_HOTEN, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HV_HOTEN, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_CCCD, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HV_CCCD, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HV_CCCD, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_GIOITINH, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.HV_GIOITINH)
-                        @Html.ValidationMessageFor(model => model.HV_GIOITINH, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_NGAYSINH, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HV_NGAYSINH, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HV_NGAYSINH, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_DIACHI, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HV_DIACHI, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HV_DIACHI, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_SDT, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HV_SDT, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HV_SDT, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_EMAIL, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HV_EMAIL, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HV_EMAIL, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_MATKHAU, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HV_MATKHAU, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HV_MATKHAU, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.HV_HINHANH, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.HV_HINHANH, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HV_HINHANH, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
-
 @using (Html.BeginForm("EditStudent", "Student", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -114,7 +15,7 @@
                     <div class="card border-0 rounded-lg">
                         <div><h3 class="font-weight-light my-4">Chỉnh sửa học viên</h3></div>
                         <div class="card-body p-0">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            
                             <div class="form-group mb-3 row align-items-center">
                                 <label class="control-label col-md-3 align-self-center">Tên học viên</label>
                                 <div class="col-md-12">
@@ -144,7 +45,14 @@
                             <div class="form-group mb-3 row align-items-center">
                                 <label class="control-label col-md-3 align-self-center">Ngày sinh</label>
                                 <div class="col-md-12">
-                                    @Html.EditorFor(model => model.HV_NGAYSINH, new { htmlAttributes = new { @class = "form-control" } })                                   
+                                    @if (Model.HV_NGAYSINH != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.HV_NGAYSINH, "{0:yyyy-MM-dd}", new { @class = "form-control datepicker", type = "date" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.HV_NGAYSINH, new { @class = "form-control datepicker", type = "date" })
+                                    }
                                     @Html.ValidationMessageFor(model => model.HV_NGAYSINH, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -166,6 +74,7 @@
                                 <label class="control-label col-md-3 align-self-center">Email</label>
                                 <div class="col-md-12">
                                     @Html.EditorFor(model => model.HV_EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                     @Html.ValidationMessageFor(model => model.HV_EMAIL, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -187,7 +96,7 @@
                         <div class="card-footer text-center py-1">
                             <div class="d-flex align-items-center justify-content-center mb-0">
                                 @Html.ActionLink("Quay trở về", "getListStudent", null, new { @class = "small m-1", @style = "text-decoration:none;" })
-                                <input type="submit" value="Thêm" class="btn btn-primary m-1" />
+                                <input type="submit" value="Lưu" class="btn btn-primary m-1" />
                             </div>
                         </div>
                     </div>

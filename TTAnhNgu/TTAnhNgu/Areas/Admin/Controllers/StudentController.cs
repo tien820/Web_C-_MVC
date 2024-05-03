@@ -10,6 +10,7 @@ using System.IO;
 using Microsoft.Ajax.Utilities;
 using TTAnhNgu.App_Start;
 using System.Web.UI.WebControls;
+using System.Web.WebPages;
 
 namespace TTAnhNgu.Areas.Admin.Controllers
 {
@@ -36,6 +37,11 @@ namespace TTAnhNgu.Areas.Admin.Controllers
             return View(listStudent);
         }
 
+        private bool CheckEmail(string email)
+        {
+            return db.HOC_VIEN.Count(gv => gv.HV_EMAIL == email) > 0;
+        }
+
         //Create Student
         [AdminAuthorization(Role = "ADMIN")]
         public ActionResult CreateStudent()
@@ -54,8 +60,8 @@ namespace TTAnhNgu.Areas.Admin.Controllers
             try
             {
                 if (ModelState.IsValid)
-                {
-                    if (file != null)
+                {                   
+                    if (file != null && !CheckEmail(student.HV_EMAIL))
                     {
                         var newFileName = Guid.NewGuid();
                         var extension = Path.GetExtension(file.FileName);
@@ -69,8 +75,18 @@ namespace TTAnhNgu.Areas.Admin.Controllers
                     {
                         student.HV_HINHANH = null;
                     }
-                    students.Add(student);
-                    db.SaveChanges();
+                    if (CheckEmail(student.HV_EMAIL))
+                    {
+                        ModelState.AddModelError("", "Email đã tồn tại");
+                        return View();
+                    }
+                    else
+                    {
+                        students.Add(student);
+                        db.SaveChanges();
+                    }
+                    //students.Add(student);
+                    //db.SaveChanges();
                 }
             }
             catch (RetryLimitExceededException /*dex*/)
@@ -90,6 +106,10 @@ namespace TTAnhNgu.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HOC_VIEN student = db.HOC_VIEN.SingleOrDefault(s => s.HV_MAHV == id);
+            if (student.HV_SDT != null)
+                student.HV_SDT = student.HV_SDT.ToString().Trim();
+            if (student.HV_CCCD != null)
+                student.HV_CCCD = student.HV_CCCD.ToString().Trim();
             return View(student);
         }
 
@@ -99,7 +119,10 @@ namespace TTAnhNgu.Areas.Admin.Controllers
         [AdminAuthorization(Role = "ADMIN")]
         public ActionResult EditStudent(int id, HttpPostedFileBase fileEdit)
         {
+            bool checkMail = false;
             var studentUpdate = db.HOC_VIEN.Find(id);
+            var check = db.HOC_VIEN.Where(ndk => ndk.HV_MAHV != studentUpdate.HV_MAHV).ToList();
+
             if (TryUpdateModel(studentUpdate, "", new string[] { "HV_HOTEN", "HV_CCCD", "HV_GIOITINH", "HV_NGAYSINH", "HV_DIACHI",
             "HV_SDT", "HV_EMAIL", "HV_MATKHAU", "HV_HINHANH" }))
             {
@@ -107,6 +130,27 @@ namespace TTAnhNgu.Areas.Admin.Controllers
                 {
                     if (fileEdit != null)
                     {
+                        foreach (var item in check)
+                        {
+                            if (item.HV_EMAIL == studentUpdate.HV_EMAIL)
+                            {
+                                checkMail = true;
+                                break;
+                            }
+                            else
+                            {
+                                checkMail = false;
+                            }
+                        }
+                        if (checkMail)
+                        {
+                            ModelState.AddModelError("", "Email đã tồn tại");
+                            return View("EditStudent", studentUpdate);
+                        }
+                        else
+                        {
+                            db.SaveChanges();
+                        }
                         var newFileName = Guid.NewGuid();
                         var extension = Path.GetExtension(fileEdit.FileName);
                         string newName = newFileName + extension;
@@ -120,10 +164,40 @@ namespace TTAnhNgu.Areas.Admin.Controllers
                         studentUpdate.HV_HINHANH = fileName;
                         fileEdit.SaveAs(path);
                         db.Entry(studentUpdate).State = EntityState.Modified;
-                        db.SaveChanges();
+                        if (studentUpdate.HV_NGAYSINH != null)
+                            studentUpdate.HV_NGAYSINH = string.Format("{0:yyyy-MM-dd}", studentUpdate.HV_NGAYSINH).AsDateTime();
+                        else
+                            studentUpdate.HV_NGAYSINH = null;
+                        
+                        //db.SaveChanges();
                     }
                     db.Entry(studentUpdate).State = EntityState.Modified;
-                    db.SaveChanges();
+                    if (studentUpdate.HV_NGAYSINH != null)
+                        studentUpdate.HV_NGAYSINH = string.Format("{0:yyyy-MM-dd}", studentUpdate.HV_NGAYSINH).AsDateTime();
+                    else
+                        studentUpdate.HV_NGAYSINH = null;
+                    foreach (var item in check)
+                    {
+                        if (item.HV_EMAIL == studentUpdate.HV_EMAIL)
+                        {
+                            checkMail = true;
+                            break;
+                        }
+                        else
+                        {
+                            checkMail = false;
+                        }
+                    }
+                    if (checkMail)
+                    {
+                        ModelState.AddModelError("", "Email đã tồn tại");
+                        return View("EditStudent", studentUpdate);
+                    }
+                    else
+                    {
+                        db.SaveChanges();
+                    }
+                    //db.SaveChanges();
                 }
                 catch (RetryLimitExceededException)
                 {
@@ -172,7 +246,7 @@ namespace TTAnhNgu.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             HOC_VIEN student = db.HOC_VIEN.SingleOrDefault(n => n.HV_MAHV == id);
-            NGAY_DANG_KY ndk = db.NGAY_DANG_KY.SingleOrDefault(n => n.HV_MAHV == id);
+            var DeleteList = db.NGAY_DANG_KY.Where(ndk => ndk.HV_MAHV == id).ToList();
             if (student.HV_HINHANH != null)
             {
                 var path = Path.Combine(Server.MapPath("~/Content/Assets/Admin/assets/img/"), student.HV_HINHANH);
@@ -186,6 +260,7 @@ namespace TTAnhNgu.Areas.Admin.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
+            db.NGAY_DANG_KY.RemoveRange(DeleteList);
             db.HOC_VIEN.Remove(student);
             db.SaveChanges();
             return RedirectToAction("getListStudent");
